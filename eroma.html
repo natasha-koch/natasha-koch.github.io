@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eroma Case Study — Natasha Koch</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:      #B5338A;
+  --secondary:    #222222;
+  --black:        #000000;
+  --white:        #FFFFFF;
+  --light-silver: #E1E1E1;
+  --white-smoke:  #F6F6F6;
+
+  --space-4:  0.25rem;
+  --space-8:  0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-20: 1.25rem;
+  --space-24: 1.5rem;
+  --space-28: 1.75rem;
+  --space-32: 2rem;
+  --space-36: 2.25rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-60: 3.75rem;
+  --space-80: 5rem;
+
+  /* Grid gutter — responsive */
+  --grid-gutter: 1rem;
+}
+
+@media (min-width: 768px) {
+  :root { --grid-gutter: 1.5rem; }
+}
+@media (min-width: 1280px) {
+  :root { --grid-gutter: 2rem; }
+}
+
+body {
+  background: var(--white);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── CONTENT WRAPPER ── */
+#content-outer {
+  width: 100%;
+  flex: 1;
+}
+
+/* ── NAV ── */
+#nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--light-silver);
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+#nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+}
+
+@media (min-width: 768px) {
+  #nav-inner { max-width: 1279px; padding: 0 var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #nav-inner { max-width: 1503px; padding: 0 var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #nav-inner { max-width: 1504px; padding: 0 var(--space-40); }
+}
+
+/* ── LOGO ── */
+#logo-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-decoration: none;
+}
+
+#logo-mark { width: 3.3125rem; height: 3.625rem; flex-shrink: 0; }
+#logo-mark svg { width: 100%; height: 100%; }
+
+#logo-text { display: flex; flex-direction: column; gap: 0.25rem; }
+
+#logo-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--secondary);
+}
+
+#logo-tagline {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.tagline-mobile { display: none; text-decoration: none; color: var(--secondary); }
+.tagline-xxs { display: none; text-decoration: none; color: var(--secondary); font-size: 0.75rem; line-height: 0.875rem; }
+
+@media (max-width: 539px) {
+  .tagline-desktop { display: none; }
+  .tagline-mobile { display: block; }
+}
+
+/* ── DESKTOP NAV LINKS ── */
+#nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-32);
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  #nav-links { display: flex; }
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a { cursor: pointer; }
+.nav-link:hover { color: var(--primary); }
+
+/* ── HAMBURGER ── */
+#hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+#hamburger i { font-size: 1.5rem; }
+
+@media (min-width: 1024px) {
+  #hamburger { display: none; }
+}
+
+/* ── MOBILE NAV ── */
+@media (max-width: 539px) {
+  #nav { height: 4.125rem; }
+  #nav-inner { height: 4.125rem; }
+  #logo-mark { width: 2.905625rem; height: 3.125rem; }
+  #logo-block { gap: var(--space-8); }
+  #logo-text { gap: 2px; }
+  #logo-name { font-size: 1rem; font-weight: 500; line-height: 1.25rem; }
+  #logo-tagline, .tagline-mobile { font-size: 0.75rem; line-height: 0.875rem; }
+}
+
+@media (max-width: 388px) {
+  .tagline-mobile { display: none; }
+  .tagline-xxs { display: block; font-size: 0.75rem; line-height: 0.875rem; }
+}
+
+/* ── OVERLAY BACKDROP ── */
+#nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#nav-backdrop.visible { display: block; }
+#nav-backdrop.open { opacity: 1; }
+
+/* ── SLIDE PANEL ── */
+#nav-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--white);
+  z-index: 400;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--light-silver);
+}
+#nav-panel.open { transform: translateX(0); }
+
+#panel-header {
+  height: 4.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-20);
+  flex-shrink: 0;
+}
+
+#panel-close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+}
+#panel-close i { font-size: 1.5rem; }
+
+#panel-links {
+  list-style: none;
+  padding: 0 0 var(--space-24);
+  flex: 1;
+}
+#panel-links li { border-bottom: 1px solid var(--light-silver); }
+#panel-links li:first-child { border-top: 1px solid var(--light-silver); }
+
+.panel-link {
+  display: block;
+  padding: var(--space-16) var(--space-20);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.panel-link:hover { color: var(--primary); background: #fdf5fa; }
+
+/* ── CONTENT WRAPPER ── */
+
+#content-inner {
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-16);
+}
+
+@media (min-width: 540px) {
+  #content-inner { padding: var(--space-28) var(--space-16); }
+}
+@media (min-width: 768px) {
+  #content-inner { max-width: 1279px; padding: var(--space-36) var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #content-inner { max-width: 1503px; padding: var(--space-48) var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #content-inner { max-width: 1504px; padding: var(--space-48) var(--space-40); }
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY HERO
+   ══════════════════════════════════════ */
+
+/* ── 12-column grid: 9 content + 3 sidebar ── */
+.cs-hero {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.cs-hero__content {
+  grid-column: 1 / 10;
+}
+
+.cs-hero__sidebar {
+  grid-column: 10 / 13;
+}
+
+/* ── Breadcrumb ── */
+/* Style: small-semi-bold-upper — Semibold 14/17, uppercase, Primary */
+.cs-breadcrumb {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* ── h1 ── */
+/* Style: h1 — Regular 48/52, sentence case, Secondary */
+.cs-title {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 3.25rem;
+  color: var(--secondary);
+  margin-top: var(--space-24);
+  font-variant-ligatures: no-common-ligatures;
+}
+
+/* h1 accent — Semibold, Primary for highlighted portion */
+.cs-title__accent {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Force second line on desktop, natural wrap on small screens */
+.cs-title__line2 {
+  display: block;
+}
+
+/* ── Hero images — 3 equal columns within content area ── */
+.cs-hero__images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: var(--space-48);
+}
+
+.cs-hero__image-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-hero__image-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--light-silver);
+}
+
+/* Style: small — Regular 14/17 */
+.cs-hero__image-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  margin-top: var(--space-12);
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════ */
+
+.cs-sidebar__group {
+  margin-bottom: var(--space-28);
+}
+
+.cs-sidebar__group:last-child {
+  margin-bottom: 0;
+}
+
+/* Style: small-semi-bold-upper — Semibold 14/17, uppercase, Primary */
+.cs-sidebar__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--space-8);
+}
+
+/* Style: body — Regular 16/20 */
+.cs-sidebar__text {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+}
+
+/* ── My Role list ── */
+.cs-role-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cs-role-list li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+}
+
+/* 4px Secondary dot */
+.cs-role-list li::before {
+  content: '';
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: var(--secondary);
+  flex-shrink: 0;
+  position: relative;
+  top: -0.25rem;
+}
+
+/* ══════════════════════════════════════
+   SECTION DIVIDER
+   ══════════════════════════════════════ */
+
+.cs-divider {
+  border: none;
+  border-top: 1px solid var(--light-silver);
+  margin: var(--space-80) 0;
+}
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY — BODY SECTIONS
+   ══════════════════════════════════════ */
+
+/* Style: h2 — Semibold 28/32, uppercase, Secondary */
+.cs-h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: var(--secondary);
+}
+
+/* Style: h4 — Semibold 16/20, uppercase, Secondary */
+.cs-h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* Style: body-paragraph — Regular 16/24, Secondary */
+.cs-body-paragraph {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: var(--secondary);
+}
+
+.cs-body-paragraph + .cs-body-paragraph {
+  margin-top: var(--space-16);
+}
+
+/* ══════════════════════════════════════
+   CONTEXT SECTION
+   ══════════════════════════════════════ */
+
+.cs-context {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  row-gap: var(--space-16);
+}
+
+.cs-context__heading {
+  grid-column: 1 / -1;
+}
+
+.cs-context__body {
+  grid-column: 3 / 11;
+}
+
+/* Section spacing */
+.cs-context {
+  margin-bottom: var(--space-80);
+}
+
+/* ══════════════════════════════════════
+   THE CHALLENGE SECTION
+   ══════════════════════════════════════ */
+
+.cs-challenge__heading {
+  margin-bottom: var(--space-32);
+}
+
+.cs-challenge__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.cs-challenge__card {
+  background: var(--white-smoke);
+  border-left: 2px solid var(--primary);
+  padding: 2rem;
+  padding-left: calc(2rem - 2px);
+}
+
+.cs-challenge__card .cs-h4 {
+  margin-bottom: var(--space-16);
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY HERO — RESPONSIVE
+   ══════════════════════════════════════ */
+
+/* ── Below 1280px: sidebar stacks below content ── */
+@media (max-width: 1279px) {
+  .cs-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-hero__content {
+    grid-column: 1 / -1;
+  }
+
+  .cs-hero__sidebar {
+    grid-column: 1 / -1;
+    margin-top: var(--space-36);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--grid-gutter);
+    row-gap: var(--space-28);
+  }
+
+  .cs-sidebar__group {
+    margin-bottom: 0;
+  }
+
+  /* My Role spans 2 rows, pinned to last column */
+  .cs-sidebar__group:nth-child(3) {
+    grid-column: -2 / -1;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ── Below 1024px: sidebar 2 columns, context and challenge stack ── */
+@media (max-width: 1023px) {
+  .cs-hero__sidebar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cs-context__body {
+    grid-column: 1 / -1;
+  }
+
+  .cs-challenge__cards {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-32);
+  }
+}
+
+/* ── Below 768px: images single column, h1 drops ── */
+@media (max-width: 767px) {
+  .cs-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .cs-hero__images {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-36);
+    row-gap: var(--space-32);
+  }
+
+  /* h2 scales down */
+  .cs-h2 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   MY APPROACH SECTION
+   ══════════════════════════════════════ */
+
+.cs-approach {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  margin-top: var(--space-80);
+  margin-bottom: var(--space-80);
+}
+
+.cs-approach__heading {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-32);
+}
+
+.cs-approach__body {
+  grid-column: 1 / 7;
+}
+
+.cs-approach__image-block {
+  grid-column: 7 / 13;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-approach__image-placeholder {
+  width: 100%;
+  aspect-ratio: 704 / 363;
+  background: var(--light-silver);
+}
+
+.cs-approach__image-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  margin-top: var(--space-12);
+}
+
+/* ══════════════════════════════════════
+   UX & PRODUCT DESIGN SECTION
+   ══════════════════════════════════════ */
+
+.cs-ux {
+  margin-bottom: var(--space-80);
+}
+
+.cs-ux__heading {
+  margin-bottom: var(--space-32);
+}
+
+.cs-ux__subsection {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  margin-bottom: var(--space-60);
+}
+
+.cs-ux__subsection:last-child {
+  margin-bottom: 0;
+}
+
+.cs-ux__subheading {
+  grid-column: 1 / 4;
+}
+
+.cs-ux__content {
+  grid-column: 4 / 13;
+}
+
+.cs-ux__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: var(--space-20);
+  grid-column: 4 / 13;
+}
+
+.cs-ux__image-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-ux__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--light-silver);
+}
+
+.cs-ux__image-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  margin-top: var(--space-12);
+}
+
+/* ══════════════════════════════════════
+   HOW I WORKED SECTION
+   ══════════════════════════════════════ */
+
+.cs-how {
+  margin-top: var(--space-80);
+  margin-bottom: var(--space-80);
+}
+
+.cs-how__heading {
+  margin-bottom: var(--space-32);
+}
+
+.cs-how__intro {
+  margin-bottom: var(--space-32);
+}
+
+@media (min-width: 1280px) {
+  .cs-how__intro {
+    max-width: calc((8 / 12) * 100%);
+  }
+}
+
+.cs-how__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+}
+
+.cs-how__card {
+  background: var(--white-smoke);
+  border-left: 2px solid var(--primary);
+  padding: 2rem;
+  padding-left: calc(2rem - 2px);
+}
+
+/* ══════════════════════════════════════
+   OUTCOME SECTION
+   ══════════════════════════════════════ */
+
+.cs-outcome {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  margin-top: var(--space-80);
+  padding-bottom: var(--space-80);
+}
+
+.cs-outcome__heading {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-32);
+}
+
+.cs-outcome__body {
+  grid-column: 1 / 9;
+}
+
+.cs-outcome__cta {
+  grid-column: 1 / 9;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-top: var(--space-36);
+  text-decoration: none;
+}
+
+.cs-outcome__play {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cs-outcome__play i {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.cs-outcome__cta-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--primary);
+}
+
+.cs-outcome__stat {
+  grid-column: 10 / 13;
+  grid-row: 2 / 4;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-32);
+  align-self: start;
+}
+
+.cs-outcome__stat-border {
+  width: 4px;
+  background: var(--primary);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.cs-outcome__stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.cs-outcome__number {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 3.25rem;
+  color: var(--secondary);
+}
+
+.cs-outcome__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* ── Responsive: Outcome ── */
+@media (max-width: 1023px) {
+  .cs-outcome__heading {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .cs-outcome__stat {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-bottom: var(--space-32);
+  }
+
+  .cs-outcome__body {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .cs-outcome__cta {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+
+#footer {
+  border-top: 1px solid var(--light-silver);
+}
+
+#footer-inner {
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #footer-inner { max-width: 1279px; padding: var(--space-32) var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #footer-inner { max-width: 1503px; padding: var(--space-32) var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #footer-inner { max-width: 1504px; padding: var(--space-32) var(--space-40); }
+}
+
+#footer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+#footer-copyright {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+
+#footer-email {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+#footer-email:hover {
+  color: var(--primary);
+}
+
+#footer-linkedin {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+#footer-linkedin:hover {
+  color: var(--primary);
+}
+
+#footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+}
+
+.footer-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-icon:hover {
+  color: var(--primary);
+}
+
+.footer-icon i {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 539px) {
+  #footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-20);
+  }
+}
+
+/* ── Responsive: My Approach ── */
+@media (max-width: 1023px) {
+  .cs-approach__body {
+    grid-column: 1 / -1;
+  }
+  .cs-approach__image-block {
+    grid-column: 1 / -1;
+    margin-top: var(--space-32);
+  }
+}
+
+/* ── Responsive: UX & Product Design ── */
+@media (max-width: 1023px) {
+  .cs-ux__subheading {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-16);
+  }
+  .cs-ux__content {
+    grid-column: 1 / -1;
+  }
+  .cs-ux__images {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-ux__images {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-32);
+  }
+}
+
+/* ── Responsive: How I Worked ── */
+@media (max-width: 1279px) {
+  .cs-how__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-how__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Below 540px: tighten spacing, h1 drops further, sidebar single column ── */
+@media (max-width: 539px) {
+  .cs-title {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin-top: var(--space-16);
+  }
+
+  .cs-title__line2 {
+    display: inline;
+  }
+
+  .cs-hero__images {
+    margin-top: var(--space-32);
+  }
+
+  .cs-hero__sidebar {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-28);
+  }
+
+  /* Reset My Role span for single column */
+  .cs-sidebar__group:nth-child(3) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .cs-challenge__card {
+    padding: 1.5rem;
+    padding-left: calc(1.5rem - 2px);
+  }
+
+  .cs-how__card {
+    padding: 1.5rem;
+    padding-left: calc(1.5rem - 2px);
+  }
+}
+
+/* ── Hide unused nav links ── */
+#nav-link-home,
+#nav-link-about,
+#nav-link-resume,
+#panel-link-home,
+#panel-link-about,
+#panel-link-resume { display: none; }
+
+/* ── CONTACT DRAWER ── */
+#contact-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--white);
+  z-index: 400;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--light-silver);
+}
+#contact-drawer.open { transform: translateX(0); }
+#contact-drawer-header {
+  height: 4.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-20);
+  flex-shrink: 0;
+}
+#contact-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+}
+#contact-drawer-close i { font-size: 1.5rem; }
+#contact-drawer-body {
+  padding: var(--space-32) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+/* CONTACT label */
+.contact-drawer__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Intro line — 14px italic, Secondary */
+.contact-drawer__intro {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+
+.contact-drawer__available {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.contact-drawer__link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  display: block;
+}
+.contact-drawer__link:hover { color: var(--primary); }
+.panel-section-label {
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: var(--space-16) var(--space-20);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--light-silver);
+}
+a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
+.panel-sub-link {
+  display: block;
+  padding: var(--space-12) var(--space-20) var(--space-12) var(--space-32);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light-silver);
+  transition: color 0.15s, background 0.15s;
+}
+.panel-sub-link:hover { color: var(--primary); background: #fdf5fa; }
+.panel-sub-link--muted { color: #9a9a9a; pointer-events: none; }
+
+/* Remove bottom border from last sub-link to avoid double border with panel-contact border-top */
+.panel-sub-link:last-child,
+.panel-sub-link--muted:last-child {
+  border-bottom: none;
+}
+.panel-contact {
+  padding: var(--space-20) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: auto;
+  border-top: 1px solid var(--light-silver);
+}
+
+/* CONTACT label — small-semi-bold-upper, Primary */
+.panel-contact__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.panel-contact__available {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+.panel-contact__link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+.panel-contact__link:hover { color: var(--primary); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div id="nav-inner">
+    <a href="#" data-link="index" id="logo-block">
+      <div id="logo-mark">
+        <svg viewBox="0 0 200 221" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+          <g transform="matrix(0.606274,0,0,0.606274,-6181.941069,-5117.49235)">
+            <g>
+              <g transform="matrix(1.126897,0,0,1.126897,10408.808895,8576.76542)">
+                <path d="M0,81.307L30.766,42.34L20.054,42.34L-29.396,105.008L-29.396,-48.543C-29.396,-61.759 -30.537,-67.228 -34.866,-72.469C-40.335,-79.078 -47.855,-82.496 -57.653,-82.496C-74.288,-82.496 -88.417,-72.014 -95.708,-54.239L-95.708,-79.164L-121.002,-79.164L-121.002,42.38L-95.937,42.38L-95.937,-32.819C-95.937,-43.301 -90.239,-55.607 -81.353,-64.722C-76.795,-69.507 -71.552,-71.874 -66.54,-72.014C-55.484,-72.322 -54.77,-66.25 -54.235,-57.43L-54.235,42.38L-54.234,42.38L-54.234,163.803L-29.625,163.803L-29.625,118.909L-17.092,102.73L10.71,163.803L37.602,163.803L0,81.307Z" style="fill:rgb(181,51,138);fill-rule:nonzero;"/>
+              </g>
+              <g transform="matrix(0.983989,0,0,54.749227,9927.069025,4685.538378)">
+                <path d="M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z" style="fill:rgb(34,34,34);fill-rule:nonzero;"/>
+              </g>
+              <g transform="matrix(-0.983989,0,0,54.749227,10796.054845,4685.538378)">
+                <path d="M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z" style="fill:rgb(34,34,34);fill-rule:nonzero;"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div id="logo-text">
+        <span id="logo-name">Natasha Koch</span>
+        <span id="logo-tagline" class="tagline-desktop">Senior UX/UI Designer / Complex Systems &amp; User Flows</span>
+        <span class="tagline-mobile">Senior UX/UI Designer / Complex Systems UX</span>
+        <span class="tagline-xxs">Senior UX/UI Designer</span>
+      </div>
+    </a>
+
+    <ul id="nav-links">
+      <li id="nav-link-home"><a href="#" data-link="index" class="nav-link">Home</a></li>
+      <li><a href="#" data-link="index" class="nav-link">Case Studies</a></li>
+      <li id="nav-link-about"><a href="#" class="nav-link">About</a></li>
+      <li id="nav-link-resume"><a href="#" class="nav-link">Resume</a></li>
+      <li><button class="nav-link" id="contact-trigger" style="background:none;border:none;cursor:pointer;padding:0;font-size:1rem;font-weight:400;line-height:1.25rem;color:var(--secondary);">Contact</button></li>
+    </ul>
+
+    <button id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <i class="ph ph-list"></i>
+    </button>
+  </div>
+</nav>
+
+<div id="nav-backdrop"></div>
+
+<!-- MOBILE SLIDE PANEL -->
+<div id="nav-panel" role="dialog" aria-label="Navigation menu">
+  <div id="panel-header">
+    <button id="panel-close" aria-label="Close menu">
+      <i class="ph ph-x"></i>
+    </button>
+  </div>
+  <ul id="panel-links">
+    <li id="panel-link-home"><a href="#" data-link="index" class="panel-link">Home</a></li>
+    <li>
+      <a href="#" data-link="index" class="panel-section-label">Case Studies</a>
+      <a href="#" data-link="mitsubishi" class="panel-sub-link">Mitsubishi / Build &amp; Price configuration tool</a>
+      <a href="#" data-link="eroma" class="panel-sub-link">Eroma / Unified B2C &amp; B2B eCommerce build</a>
+      <span class="panel-sub-link panel-sub-link--muted">Takeflight (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Neverfail (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Haigh's Chocolates (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Bed Bath N' Table (coming soon)</span>
+    </li>
+    <li id="panel-link-about"><a href="#" class="panel-link">About</a></li>
+    <li id="panel-link-resume"><a href="#" class="panel-link">Resume</a></li>
+  </ul>
+  <div class="panel-contact">
+    <span class="panel-contact__heading">Contact</span>
+    <span class="panel-contact__available">Available for new opportunities</span>
+    <a href="mailto:tashrkoch@gmail.com" class="panel-contact__link">tashrkoch@gmail.com</a>
+    <a href="https://au.linkedin.com/in/natashakoch" target="_blank" class="panel-contact__link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- CONTACT DRAWER (desktop) -->
+<div id="contact-drawer" role="dialog" aria-label="Contact">
+  <div id="contact-drawer-header">
+    <button id="contact-drawer-close" aria-label="Close contact">
+      <i class="ph ph-x"></i>
+    </button>
+  </div>
+  <div id="contact-drawer-body">
+    <span class="contact-drawer__heading">Contact</span>
+    <span class="contact-drawer__intro">Available for new opportunities</span>
+    <a href="mailto:tashrkoch@gmail.com" class="contact-drawer__link">tashrkoch@gmail.com</a>
+    <a href="https://au.linkedin.com/in/natashakoch" target="_blank" class="contact-drawer__link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content-outer">
+  <div id="content-inner">
+
+    <div class="cs-hero">
+
+      <!-- ── CONTENT AREA (9 cols) ── -->
+      <div class="cs-hero__content">
+
+        <!-- Breadcrumb -->
+        <p class="cs-breadcrumb">CASE STUDY ∙ ADOBE COMMERCE (PWA)</p>
+
+        <!-- Title -->
+        <h1 class="cs-title">Eroma / <span class="cs-title__accent">Unified B2C &amp; B2B</span> <span class="cs-title__line2">eCommerce greenfields build</span></h1>
+
+        <!-- Hero images -->
+        <div class="cs-hero__images">
+          <div class="cs-hero__image-block">
+            <div class="cs-hero__image-placeholder"></div>
+            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-hero__image-block">
+            <div class="cs-hero__image-placeholder"></div>
+            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-hero__image-block">
+            <div class="cs-hero__image-placeholder"></div>
+            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── SIDEBAR (3 cols) ── -->
+      <aside class="cs-hero__sidebar">
+
+        <div class="cs-sidebar__group">
+          <p class="cs-sidebar__label">Client</p>
+          <p class="cs-sidebar__text">Australia's largest provider of premium candle-making supplies and artisan fragrance oils</p>
+        </div>
+
+        <div class="cs-sidebar__group">
+          <p class="cs-sidebar__label">Engagement</p>
+          <p class="cs-sidebar__text">3 years</p>
+        </div>
+
+        <div class="cs-sidebar__group">
+          <p class="cs-sidebar__label">My Role</p>
+          <ul class="cs-role-list">
+            <li>Led UX Strategy &amp; Product Design</li>
+            <li>Discovery &amp; Research</li>
+            <li>Stakeholder Management</li>
+            <li>Design System &amp; Component Library</li>
+            <li>Frontend Collaboration</li>
+            <li>Quality Leadership</li>
+          </ul>
+        </div>
+
+        <div class="cs-sidebar__group">
+          <p class="cs-sidebar__label">Aligent Team</p>
+          <p class="cs-sidebar__text">Project Manager ∙ Technical Analyst ∙ Frontend Tech Lead ∙ Frontend Engineers ∙ Backend Tech Lead ∙ Backend Engineers ∙ QA Engineers</p>
+        </div>
+
+        <div class="cs-sidebar__group">
+          <p class="cs-sidebar__label">Client Team</p>
+          <p class="cs-sidebar__text">CEO ∙ eCommerce Manager ∙ Marketing Manager ∙ Brand Designer</p>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <hr class="cs-divider">
+
+    <!-- CONTEXT -->
+    <section class="cs-context">
+      <div class="cs-context__heading">
+        <h2 class="cs-h2">Context</h2>
+      </div>
+      <div class="cs-context__body">
+        <p class="cs-body-paragraph">Eroma had over 30,000 active customers spanning individual makers and hobbyists through to professional candle brands supplying some of Australia's leading retailers. Their digital platform was the backbone of the business, 95% of orders were placed online. When Eroma commissioned a greenfields platform, I led the end-to-end UX and product design across a three-year engagement.</p>
+      </div>
+    </section>
+
+    <!-- THE CHALLENGE -->
+    <section class="cs-challenge">
+      <h2 class="cs-h2 cs-challenge__heading">The challenge</h2>
+      <div class="cs-challenge__cards">
+
+        <div class="cs-challenge__card">
+          <h4 class="cs-h4">Dual Audience</h4>
+          <p class="cs-body-paragraph">One platform for two fundamentally different customers. Retail consumers browsing and discovering. B2B buyers placing large repeat orders with tiered pricing, account requirements, and specific fulfilment needs. Every UX decision had to work for both without compromising either.</p>
+        </div>
+
+        <div class="cs-challenge__card">
+          <h4 class="cs-h4">Vast Product Catalogue</h4>
+          <p class="cs-body-paragraph">The catalogue spanned candle jars, waxes, wicks, fragrances, lids, packaging, and accessories, many with multiple configurations, colour variants, and size options. Products frequently needed to be understood in relation to each other, requiring careful information architecture and considered cross-sell thinking throughout.</p>
+        </div>
+
+        <div class="cs-challenge__card">
+          <h4 class="cs-h4">Multi-Warehouse Fulfilment</h4>
+          <p class="cs-body-paragraph">Eroma operated multiple warehouse and showroom locations across Australia, with stock levels and availability varying by location. A single order could involve stock shipped from more than one warehouse, each with different delivery costs, or a user might choose to pick up instead. This required a level of inventory transparency and user control that standard ecommerce platforms were not designed to handle.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MY APPROACH -->
+    <section class="cs-approach">
+
+      <div class="cs-approach__heading">
+        <h2 class="cs-h2">My approach</h2>
+      </div>
+
+      <div class="cs-approach__body">
+        <p class="cs-body-paragraph">The engagement began with discovery, working closely with the client to understand the product catalogue, customer types, and the operational complexity of the business. From there I followed a deliberate sequencing approach: establish the core product entity first, then build outward. The Product Display Page (PDP) was the starting point, working through to the Product Listing Page (PLP), mini cart, checkout, and account areas, ensuring UX patterns were established at the foundation before the wider site was built on top of them.</p>
+        <p class="cs-body-paragraph">Wireframes were produced first across all major flows and handed to development to begin building, allowing the front-end team to establish functionality while UI design continued in parallel. This agile approach kept the project moving without requiring fully polished designs before development could start.</p>
+        <p class="cs-body-paragraph">Throughout the engagement I built and maintained a comprehensive design system that scaled across two years and multiple developers without losing coherence. Built from the ground up as a component library and UI pattern framework, with accessibility embedded as a foundational principle, it established visual consistency across the site while providing the development team a reliable, reusable foundation to build from.</p>
+      </div>
+
+      <div class="cs-approach__image-block">
+        <div class="cs-approach__image-placeholder"></div>
+        <p class="cs-approach__image-label">Image label, lorem ipsum delor</p>
+      </div>
+
+    </section>
+
+    <!-- UX & PRODUCT DESIGN -->
+    <section class="cs-ux">
+
+      <h2 class="cs-h2 cs-ux__heading">UX &amp; product design</h2>
+
+      <!-- Transparency & Fulfilment -->
+      <div class="cs-ux__subsection">
+        <h4 class="cs-h4 cs-ux__subheading">Transparency &amp; Fulfilment</h4>
+        <div class="cs-ux__content">
+          <p class="cs-body-paragraph">Transparency was the guiding UX principle, a reflection of Eroma's relationship with their customer base. The mini cart had to handle delivery versus pickup, show which warehouses items were coming from, display delivery costs per warehouse split, and let users toggle between fulfilment options to compare. Stock visibility was surfaced at every touchpoint: PDP, mini cart, checkout, so users were never surprised. I designed the out-of-stock and reduced-stock flows to notify users early and clearly.</p>
+          <!-- FLAG: "replacing the existing platform behaviour that simply failed at checkout" removed — wording was inaccurate, revisit for content pass -->
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Complexity -->
+      <div class="cs-ux__subsection">
+        <h4 class="cs-h4 cs-ux__subheading">Product Complexity</h4>
+        <div class="cs-ux__content">
+          <p class="cs-body-paragraph">The PDP was built on a modular component system, configurable to each product's specific needs. A user could order a pack of forty-eight, two packs of twelve, and individual items, all in one add-to-cart action. <!-- FLAG: "Tiered pricing updated dynamically across pack sizes" — check accuracy, image suggests static tiered pricing banner not dynamic update --> The system had to make this scannable and intuitive, not overwhelming, across both simple single-purchase products and the most complex configurable lines.</p>
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual-Audience Navigation -->
+      <div class="cs-ux__subsection">
+        <h4 class="cs-h4 cs-ux__subheading">Dual-Audience Navigation</h4>
+        <div class="cs-ux__content">
+          <p class="cs-body-paragraph">The standard PLP served the broader catalogue, but fragrances <!-- FLAG: "Eroma's key differentiator, Australian made" — verify, resolve in content pass --> required a fully custom PLP. It needed to serve users who knew exactly what they wanted by name, those browsing by scent type or season, and those browsing without a specific fragrance in mind. I designed a triple navigation system on a single page: search, category filtering, and A-Z navigation. B2B customers needing to bypass the catalogue entirely were served by Quick Order for efficient repeat procurement.</p>
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout & Account -->
+      <div class="cs-ux__subsection">
+        <h4 class="cs-h4 cs-ux__subheading">Checkout &amp; Account</h4>
+        <div class="cs-ux__content">
+          <p class="cs-body-paragraph">Before a single checkout screen was designed, I mapped the complete user flows covering every user type, decision point, and edge case. The account area went beyond Adobe Commerce's native capabilities, with wishlists serving both audiences, functioning as familiar lists for B2C customers and as named requisition lists for efficient B2B repeat ordering.</p>
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <div class="cs-ux__image-placeholder"></div>
+            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- HOW I WORKED -->
+    <section class="cs-how">
+
+      <h2 class="cs-h2 cs-how__heading">How I worked</h2>
+
+      <p class="cs-body-paragraph cs-how__intro">I maintained an ongoing collaborative client relationship while simultaneously managing multiple complex and interdependent workstreams. To manage this at scale, I developed systems for each workstream.</p>
+
+      <div class="cs-how__cards">
+
+        <div class="cs-how__card">
+          <p class="cs-body-paragraph"><strong>Design-to-development handovers</strong> were timed to when a developer was ready to pick up the work, not when designs were finished, avoiding context being lost between handover and implementation. Developers were asked to review designs beforehand so sessions could focus on questions and decisions rather than first impressions.</p>
+        </div>
+
+        <div class="cs-how__card">
+          <p class="cs-body-paragraph"><strong>Design QA</strong> was managed through a structured Jira-based system, broken down by feature or section and documented in a way that any developer could pick up a ticket regardless of whether they had been on the original work. A traffic light system tracked status across iterations keeping quality assurance moving.</p>
+        </div>
+
+        <div class="cs-how__card">
+          <p class="cs-body-paragraph">I established a <strong>design-to-test process</strong> that kept testers focused on functional validation while maintaining design intent. One tester told me at the end of the project she'd learned more about UX and design thinking from working on Eroma than she'd expected.</p>
+        </div>
+
+        <div class="cs-how__card">
+          <p class="cs-body-paragraph">Working closely with front-end developers, I actively <strong>lifted design literacy across the team</strong>, helping developers approach problems through patterns and reusable systems rather than one-off solutions, a perspective informed equally by my background in both design and front-end development.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="cs-outcome">
+
+      <div class="cs-outcome__heading">
+        <h2 class="cs-h2">Outcome</h2>
+      </div>
+
+      <div class="cs-outcome__body">
+        <p class="cs-body-paragraph">The engagement exceeded 1,000 hours of design work across three years. Aligent later selected it as a flagship case study, using it in client proposals and featuring it in an 11-minute process video documenting the design approach.</p>
+      </div>
+
+      <a href="https://www.linkedin.com/posts/aligent-consulting_craftmanship-at-its-core-a-deep-dive-into-activity-7227456596765724672-IKDm/" target="_blank" class="cs-outcome__cta">
+        <div class="cs-outcome__play">
+          <i class="ph-fill ph-play"></i>
+        </div>
+        <span class="cs-outcome__cta-text">Watch the process video</span>
+      </a>
+
+      <div class="cs-outcome__stat">
+        <div class="cs-outcome__stat-border"></div>
+        <div class="cs-outcome__stat-content">
+          <span class="cs-outcome__number">1,000+</span>
+          <span class="cs-outcome__label">Hours of Design</span>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<footer id="footer">
+  <div id="footer-inner">
+    <div id="footer-left">
+      <a href="mailto:tashrkoch@gmail.com" id="footer-email">tashrkoch@gmail.com</a>
+      <a href="https://au.linkedin.com/in/natashakoch" target="_blank" id="footer-linkedin">LinkedIn</a>
+    </div>
+    <div id="footer-right">
+      <span id="footer-copyright">© 2026 Natasha Koch</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── FILENAME VARIABLES — update here on each version bump ──
+  const FILES = {
+    index:      'index.html',
+    mitsubishi: 'mitsubishi.html',
+    eroma:      'eroma.html'
+  };
+
+  // Apply links to nav and panel elements
+  document.querySelectorAll('[data-link]').forEach(el => {
+    el.href = FILES[el.dataset.link];
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const panel = document.getElementById('nav-panel');
+  const backdrop = document.getElementById('nav-backdrop');
+  const closeBtn = document.getElementById('panel-close');
+  const contactTrigger = document.getElementById('contact-trigger');
+  const contactDrawer = document.getElementById('contact-drawer');
+  const contactDrawerClose = document.getElementById('contact-drawer-close');
+
+  function openMenu() {
+    hamburger.setAttribute('aria-expanded', 'true');
+    backdrop.classList.add('visible');
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+      panel.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.setAttribute('aria-expanded', 'false');
+    backdrop.classList.remove('open');
+    panel.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => backdrop.classList.remove('visible'), 250);
+  }
+
+  function openContact() {
+    backdrop.classList.add('visible');
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+      contactDrawer.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContact() {
+    backdrop.classList.remove('open');
+    contactDrawer.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => backdrop.classList.remove('visible'), 250);
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', () => {
+    closeMenu();
+    closeContact();
+  });
+  contactTrigger.addEventListener('click', openContact);
+  contactDrawerClose.addEventListener('click', closeContact);
+</script>
+
+</body>
+</html>

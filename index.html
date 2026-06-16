@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natasha Koch — Senior UX/UI Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:      #B5338A;
+  --secondary:    #222222;
+  --black:        #000000;
+  --white:        #FFFFFF;
+  --light-silver: #E1E1E1;
+  --white-smoke:  #F6F6F6;
+
+  --space-4:  0.25rem;
+  --space-8:  0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-20: 1.25rem;
+  --space-24: 1.5rem;
+  --space-28: 1.75rem;
+  --space-32: 2rem;
+  --space-36: 2.25rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-60: 3.75rem;
+  --space-80: 5rem;
+
+  --grid-gutter: 1rem;
+}
+
+@media (min-width: 768px) {
+  :root { --grid-gutter: 1.5rem; }
+}
+@media (min-width: 1280px) {
+  :root { --grid-gutter: 2rem; }
+}
+
+body {
+  background: var(--white);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── CONTENT WRAPPER ── */
+#content-outer {
+  width: 100%;
+  flex: 1;
+}
+
+/* ── NAV ── */
+#nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--light-silver);
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+#nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+}
+
+@media (min-width: 768px) {
+  #nav-inner { max-width: 1279px; padding: 0 var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #nav-inner { max-width: 1503px; padding: 0 var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #nav-inner { max-width: 1504px; padding: 0 var(--space-40); }
+}
+
+/* ── LOGO ── */
+#logo-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-decoration: none;
+}
+
+#logo-mark { width: 3.3125rem; height: 3.625rem; flex-shrink: 0; }
+#logo-mark svg { width: 100%; height: 100%; }
+
+#logo-text { display: flex; flex-direction: column; gap: 0.25rem; }
+
+#logo-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--secondary);
+}
+
+#logo-tagline {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.tagline-mobile { display: none; text-decoration: none; color: var(--secondary); }
+.tagline-xxs { display: none; text-decoration: none; color: var(--secondary); font-size: 0.75rem; line-height: 0.875rem; }
+
+@media (max-width: 539px) {
+  .tagline-desktop { display: none; }
+  .tagline-mobile { display: block; }
+}
+
+/* ── DESKTOP NAV LINKS ── */
+#nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-32);
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  #nav-links { display: flex; }
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a { cursor: pointer; }
+.nav-link:hover { color: var(--primary); }
+
+/* ── HAMBURGER ── */
+#hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+#hamburger i { font-size: 1.5rem; }
+
+@media (min-width: 1024px) {
+  #hamburger { display: none; }
+}
+
+/* ── MOBILE NAV ── */
+@media (max-width: 539px) {
+  #nav { height: 4.125rem; }
+  #nav-inner { height: 4.125rem; }
+  #logo-mark { width: 2.905625rem; height: 3.125rem; }
+  #logo-block { gap: var(--space-8); }
+  #logo-text { gap: 2px; }
+  #logo-name { font-size: 1rem; font-weight: 500; line-height: 1.25rem; }
+  #logo-tagline, .tagline-mobile { font-size: 0.75rem; line-height: 0.875rem; }
+}
+
+@media (max-width: 388px) {
+  .tagline-mobile { display: none; }
+  .tagline-xxs { display: block; font-size: 0.75rem; line-height: 0.875rem; }
+}
+
+/* ── OVERLAY BACKDROP ── */
+#nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#nav-backdrop.visible { display: block; }
+#nav-backdrop.open { opacity: 1; }
+
+/* ── SLIDE PANEL ── */
+#nav-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--white);
+  z-index: 400;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--light-silver);
+}
+#nav-panel.open { transform: translateX(0); }
+
+#panel-header {
+  height: 4.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-20);
+  flex-shrink: 0;
+}
+
+#panel-close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+}
+#panel-close i { font-size: 1.5rem; }
+
+#panel-links {
+  list-style: none;
+  padding: 0 0 var(--space-24);
+  flex: 1;
+}
+#panel-links li { border-bottom: 1px solid var(--light-silver); }
+#panel-links li:first-child { border-top: 1px solid var(--light-silver); }
+
+.panel-link {
+  display: block;
+  padding: var(--space-16) var(--space-20);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.panel-link:hover { color: var(--primary); background: #fdf5fa; }
+
+/* ── CONTENT WRAPPER ── */
+
+
+#content-inner {
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-16);
+}
+
+@media (min-width: 540px) {
+  #content-inner { padding: var(--space-28) var(--space-16); }
+}
+@media (min-width: 768px) {
+  #content-inner { max-width: 1279px; padding: var(--space-36) var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #content-inner { max-width: 1503px; padding: var(--space-48) var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #content-inner { max-width: 1504px; padding: var(--space-48) var(--space-40); }
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY GRID
+   ══════════════════════════════════════ */
+
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--grid-gutter);
+  row-gap: var(--grid-gutter);
+}
+
+/* ── CARD ── */
+.cs-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+.cs-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: var(--white-smoke);
+  margin-bottom: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--white-smoke);
+}
+
+/* Coming soon overlay */
+.cs-card--soon .cs-card__image::after {
+  content: 'Coming soon';
+  position: absolute;
+  top: var(--space-12);
+  left: var(--space-12);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  background: #f1f1f1;
+  padding: var(--space-4) var(--space-8);
+}
+
+/* ── Card text ── */
+.cs-card__client {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--space-4);
+}
+
+/* Parent company in brackets — smaller, same colour */
+.cs-card__client-sub {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* ══════════════════════════════════════
+   TYPE SCALE — FULL SET
+   ══════════════════════════════════════ */
+
+/* h1 — Regular 48/52, sentence case, Secondary */
+.cs-title {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 3.25rem;
+  color: var(--secondary);
+  font-variant-ligatures: no-common-ligatures;
+}
+
+/* h2 — Semibold 28/32, sentence case, Secondary */
+.cs-h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: var(--secondary);
+}
+
+/* h3 — Semibold 24/28, uppercase, Secondary */
+.cs-h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* h4 — Semibold 16/20, uppercase, Secondary */
+.cs-h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* Page heading — margin below */
+.page-heading {
+  margin-bottom: var(--space-24);
+}
+
+@media (max-width: 767px) {
+  .cs-title { font-size: 2.25rem; line-height: 2.5rem; }
+  .cs-h2 { font-size: 1.5rem; line-height: 1.75rem; }
+}
+
+@media (max-width: 539px) {
+  .cs-title { font-size: 1.75rem; line-height: 2rem; }
+}
+
+.cs-card__title {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: var(--secondary);
+}
+
+/* Hover — live cards only */
+.cs-card:not(.cs-card--soon):hover .cs-card__image {
+  opacity: 0.8;
+}
+
+.cs-card:not(.cs-card--soon):hover .cs-card__title {
+  color: var(--primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1279px) {
+  .cs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 539px) {
+  .cs-card__client-sub {
+    display: block;
+  }
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+
+#footer {
+  border-top: 1px solid var(--light-silver);
+}
+
+#footer-inner {
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #footer-inner { max-width: 1279px; padding: var(--space-32) var(--space-24); }
+}
+@media (min-width: 1280px) {
+  #footer-inner { max-width: 1503px; padding: var(--space-32) var(--space-32); }
+}
+@media (min-width: 1504px) {
+  #footer-inner { max-width: 1504px; padding: var(--space-32) var(--space-40); }
+}
+
+#footer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+#footer-copyright {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+
+#footer-email {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+#footer-email:hover { color: var(--primary); }
+
+#footer-linkedin {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+#footer-linkedin:hover { color: var(--primary); }
+
+#footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+}
+
+@media (max-width: 539px) {
+  #footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-20);
+  }
+}
+
+/* ── Hide unused nav links ── */
+#nav-link-home,
+#nav-link-about,
+#nav-link-resume,
+#panel-link-home,
+#panel-link-about,
+#panel-link-resume { display: none; }
+
+/* ── CONTACT DRAWER ── */
+#contact-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--white);
+  z-index: 400;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--light-silver);
+}
+#contact-drawer.open { transform: translateX(0); }
+
+#contact-drawer-header {
+  height: 4.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-20);
+  flex-shrink: 0;
+}
+
+#contact-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--secondary);
+}
+#contact-drawer-close i { font-size: 1.5rem; }
+
+#contact-drawer-body {
+  padding: var(--space-32) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* CONTACT label — small-semi-bold-upper, Primary */
+.contact-drawer__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Intro line — 14px italic, Secondary */
+.contact-drawer__intro {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+
+.contact-drawer__link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  display: block;
+}
+.contact-drawer__link:hover { color: var(--primary); }
+
+/* ── Mobile panel — Case Studies section ── */
+.panel-section-label {
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: var(--space-16) var(--space-20);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--light-silver);
+}
+a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
+
+.panel-sub-link {
+  display: block;
+  padding: var(--space-12) var(--space-20) var(--space-12) var(--space-32);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light-silver);
+  transition: color 0.15s, background 0.15s;
+}
+.panel-sub-link:hover { color: var(--primary); background: #fdf5fa; }
+
+.panel-sub-link--muted {
+  color: #9a9a9a;
+  pointer-events: none;
+}
+
+/* Remove bottom border from last sub-link to avoid double border with panel-contact border-top */
+.panel-sub-link:last-child,
+.panel-sub-link--muted:last-child {
+  border-bottom: none;
+}
+
+/* ── Mobile panel — Contact section ── */
+.panel-contact {
+  padding: var(--space-20) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: auto;
+  border-top: 1px solid var(--light-silver);
+}
+
+/* CONTACT label — small-semi-bold-upper, Primary */
+.panel-contact__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.0625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.panel-contact__available {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.0625rem;
+  color: var(--secondary);
+}
+
+.panel-contact__link {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+.panel-contact__link:hover { color: var(--primary); }
+
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div id="nav-inner">
+    <a href="#" data-link="index" id="logo-block">
+      <div id="logo-mark">
+        <svg viewBox="0 0 200 221" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+          <g transform="matrix(0.606274,0,0,0.606274,-6181.941069,-5117.49235)">
+            <g>
+              <g transform="matrix(1.126897,0,0,1.126897,10408.808895,8576.76542)">
+                <path d="M0,81.307L30.766,42.34L20.054,42.34L-29.396,105.008L-29.396,-48.543C-29.396,-61.759 -30.537,-67.228 -34.866,-72.469C-40.335,-79.078 -47.855,-82.496 -57.653,-82.496C-74.288,-82.496 -88.417,-72.014 -95.708,-54.239L-95.708,-79.164L-121.002,-79.164L-121.002,42.38L-95.937,42.38L-95.937,-32.819C-95.937,-43.301 -90.239,-55.607 -81.353,-64.722C-76.795,-69.507 -71.552,-71.874 -66.54,-72.014C-55.484,-72.322 -54.77,-66.25 -54.235,-57.43L-54.235,42.38L-54.234,42.38L-54.234,163.803L-29.625,163.803L-29.625,118.909L-17.092,102.73L10.71,163.803L37.602,163.803L0,81.307Z" style="fill:rgb(181,51,138);fill-rule:nonzero;"/>
+              </g>
+              <g transform="matrix(0.983989,0,0,54.749227,9927.069025,4685.538378)">
+                <path d="M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z" style="fill:rgb(34,34,34);fill-rule:nonzero;"/>
+              </g>
+              <g transform="matrix(-0.983989,0,0,54.749227,10796.054845,4685.538378)">
+                <path d="M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z" style="fill:rgb(34,34,34);fill-rule:nonzero;"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div id="logo-text">
+        <span id="logo-name">Natasha Koch</span>
+        <span id="logo-tagline" class="tagline-desktop">Senior UX/UI Designer / Complex Systems &amp; User Flows</span>
+        <span class="tagline-mobile">Senior UX/UI Designer / Complex Systems UX</span>
+        <span class="tagline-xxs">Senior UX/UI Designer</span>
+      </div>
+    </a>
+
+    <ul id="nav-links">
+      <li id="nav-link-home"><a href="#" data-link="index" class="nav-link">Home</a></li>
+      <li><a href="#" data-link="index" class="nav-link">Case Studies</a></li>
+      <li id="nav-link-about"><a href="#" class="nav-link">About</a></li>
+      <li id="nav-link-resume"><a href="#" class="nav-link">Resume</a></li>
+      <li><button class="nav-link" id="contact-trigger" style="background:none;border:none;cursor:pointer;padding:0;font-size:1rem;font-weight:400;line-height:1.25rem;color:var(--secondary);">Contact</button></li>
+    </ul>
+
+    <button id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <i class="ph ph-list"></i>
+    </button>
+  </div>
+</nav>
+
+<div id="nav-backdrop"></div>
+
+<!-- MOBILE SLIDE PANEL -->
+<div id="nav-panel" role="dialog" aria-label="Navigation menu">
+  <div id="panel-header">
+    <button id="panel-close" aria-label="Close menu">
+      <i class="ph ph-x"></i>
+    </button>
+  </div>
+  <ul id="panel-links">
+    <li id="panel-link-home"><a href="#" data-link="index" class="panel-link">Home</a></li>
+    <li>
+      <a href="#" data-link="index" class="panel-section-label">Case Studies</a>
+      <a href="#" data-link="mitsubishi" class="panel-sub-link">Mitsubishi / Build &amp; Price configuration tool</a>
+      <a href="#" data-link="eroma" class="panel-sub-link">Eroma / Unified B2C &amp; B2B eCommerce build</a>
+      <span class="panel-sub-link panel-sub-link--muted">Takeflight (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Neverfail (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Haigh's Chocolates (coming soon)</span>
+      <span class="panel-sub-link panel-sub-link--muted">Bed Bath N' Table (coming soon)</span>
+    </li>
+    <li id="panel-link-about"><a href="#" class="panel-link">About</a></li>
+    <li id="panel-link-resume"><a href="#" class="panel-link">Resume</a></li>
+  </ul>
+  <div class="panel-contact">
+    <span class="panel-contact__heading">Contact</span>
+    <span class="panel-contact__available">Available for new opportunities</span>
+    <a href="mailto:tashrkoch@gmail.com" class="panel-contact__link">tashrkoch@gmail.com</a>
+    <a href="https://au.linkedin.com/in/natashakoch" target="_blank" class="panel-contact__link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- CONTACT DRAWER (desktop) -->
+<div id="contact-drawer" role="dialog" aria-label="Contact">
+  <div id="contact-drawer-header">
+    <button id="contact-drawer-close" aria-label="Close contact">
+      <i class="ph ph-x"></i>
+    </button>
+  </div>
+  <div id="contact-drawer-body">
+    <span class="contact-drawer__heading">Contact</span>
+    <span class="contact-drawer__intro">Available for new opportunities</span>
+    <a href="mailto:tashrkoch@gmail.com" class="contact-drawer__link">tashrkoch@gmail.com</a>
+    <a href="https://au.linkedin.com/in/natashakoch" target="_blank" class="contact-drawer__link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content-outer">
+  <div id="content-inner">
+
+    <h1 class="cs-h2 page-heading">Case studies</h1>
+
+    <div class="cs-grid">
+
+      <!-- 1. Mitsubishi — LIVE -->
+      <a href="#" data-link="mitsubishi" class="cs-card">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Mitsubishi Motors Australia</p>
+        <p class="cs-card__title">Build &amp; Price configuration tool</p>
+      </a>
+
+      <!-- 2. Eroma — LIVE -->
+      <a href="#" data-link="eroma" class="cs-card">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Eroma</p>
+        <p class="cs-card__title">Unified B2C &amp; B2B eCommerce greenfields build</p>
+      </a>
+
+      <!-- 3. Takeflight — COMING SOON -->
+      <div class="cs-card cs-card--soon">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Takeflight</p>
+        <p class="cs-card__title">PWA eCommerce accelerator &amp; design system</p>
+      </div>
+
+      <!-- 4. Neverfail — COMING SOON -->
+      <div class="cs-card cs-card--soon">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Neverfail <span class="cs-card__client-sub">(Coca-Cola Europacific Partners)</span></p>
+        <p class="cs-card__title">UX research &amp; strategic user flows</p>
+      </div>
+
+      <!-- 5. Haigh's Chocolates — COMING SOON -->
+      <div class="cs-card cs-card--soon">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Haigh's Chocolates</p>
+        <p class="cs-card__title">Greenfields B2C eCommerce UX &amp; UI</p>
+      </div>
+
+      <!-- 6. Bed Bath N' Table — COMING SOON -->
+      <div class="cs-card cs-card--soon">
+        <div class="cs-card__image">
+          <div class="cs-card__image-placeholder"></div>
+        </div>
+        <p class="cs-card__client">Bed Bath N' Table</p>
+        <p class="cs-card__title">eCommerce UX &amp; UI — complex product data &amp; design leadership</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<footer id="footer">
+  <div id="footer-inner">
+    <div id="footer-left">
+      <a href="mailto:tashrkoch@gmail.com" id="footer-email">tashrkoch@gmail.com</a>
+      <a href="https://au.linkedin.com/in/natashakoch" target="_blank" id="footer-linkedin">LinkedIn</a>
+    </div>
+    <div id="footer-right">
+      <span id="footer-copyright">© 2026 Natasha Koch</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── FILENAME VARIABLES — update here on each version bump ──
+  const FILES = {
+    index:      'index.html',
+    mitsubishi: 'mitsubishi.html',
+    eroma:      'eroma.html'
+  };
+
+  // Apply links to nav and panel elements
+  document.querySelectorAll('[data-link]').forEach(el => {
+    el.href = FILES[el.dataset.link];
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const panel = document.getElementById('nav-panel');
+  const backdrop = document.getElementById('nav-backdrop');
+  const closeBtn = document.getElementById('panel-close');
+  const contactTrigger = document.getElementById('contact-trigger');
+  const contactDrawer = document.getElementById('contact-drawer');
+  const contactDrawerClose = document.getElementById('contact-drawer-close');
+
+  function openMenu() {
+    hamburger.setAttribute('aria-expanded', 'true');
+    backdrop.classList.add('visible');
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+      panel.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.setAttribute('aria-expanded', 'false');
+    backdrop.classList.remove('open');
+    panel.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => backdrop.classList.remove('visible'), 250);
+  }
+
+  function openContact() {
+    backdrop.classList.add('visible');
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+      contactDrawer.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContact() {
+    backdrop.classList.remove('open');
+    contactDrawer.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => backdrop.classList.remove('visible'), 250);
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', () => {
+    closeMenu();
+    closeContact();
+  });
+  contactTrigger.addEventListener('click', openContact);
+  contactDrawerClose.addEventListener('click', closeContact);
+</script>
+
+</body>
+</html>
