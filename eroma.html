@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 200 221' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2'%3E%3Cg transform='matrix(0.606274,0,0,0.606274,-6181.941069,-5117.49235)'%3E%3Cg%3E%3Cg transform='matrix(1.126897,0,0,1.126897,10408.808895,8576.76542)'%3E%3Cpath d='M0,81.307L30.766,42.34L20.054,42.34L-29.396,105.008L-29.396,-48.543C-29.396,-61.759 -30.537,-67.228 -34.866,-72.469C-40.335,-79.078 -47.855,-82.496 -57.653,-82.496C-74.288,-82.496 -88.417,-72.014 -95.708,-54.239L-95.708,-79.164L-121.002,-79.164L-121.002,42.38L-95.937,42.38L-95.937,-32.819C-95.937,-43.301 -90.239,-55.607 -81.353,-64.722C-76.795,-69.507 -71.552,-71.874 -66.54,-72.014C-55.484,-72.322 -54.77,-66.25 -54.235,-57.43L-54.235,42.38L-54.234,42.38L-54.234,163.803L-29.625,163.803L-29.625,118.909L-17.092,102.73L10.71,163.803L37.602,163.803L0,81.307Z' style='fill:rgb(181,51,138);fill-rule:nonzero'/%3E%3C/g%3E%3Cg transform='matrix(0.983989,0,0,54.749227,9927.069025,4685.538378)'%3E%3Cpath d='M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z' style='fill:rgb(34,34,34);fill-rule:nonzero'/%3E%3C/g%3E%3Cg transform='matrix(-0.983989,0,0,54.749227,10796.054845,4685.538378)'%3E%3Cpath d='M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z' style='fill:rgb(34,34,34);fill-rule:nonzero'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eroma Case Study — Natasha Koch</title>
+<title>Natasha Koch — Eroma Case Study</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
 <style>
@@ -1157,6 +1158,157 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
   text-decoration: none;
 }
 .panel-contact__link:hover { color: var(--primary); }
+
+/* ══════════════════════════════════════
+   PASSWORD PROTECTION
+   ══════════════════════════════════════ */
+
+#pw-overlay {
+  position: fixed;
+  inset: 0;
+  background: #222222;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#pw-overlay.hidden {
+  display: none;
+}
+
+.pw-box {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.4);
+}
+
+.pw-box__heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #222222;
+  margin: 0;
+}
+
+.pw-box__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #222222;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.pw-box__input:focus {
+  border-color: #B5338A;
+}
+
+.pw-box__submit {
+  background: #B5338A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.pw-box__submit:hover {
+  opacity: 0.88;
+}
+
+.pw-box__error {
+  color: #B5338A;
+  font-size: 0.875rem;
+  min-height: 1.25rem;
+  margin: 0;
+}
+
+.pw-box__contact {
+  font-size: 0.8125rem;
+  color: #222222;
+  margin: 0;
+}
+
+.pw-box__contact a {
+  color: #B5338A;
+  text-decoration: none;
+}
+
+.pw-box__contact a:hover {
+  text-decoration: underline;
+}
+
+/* ══════════════════════════════════════
+   LIGHTBOX
+   ══════════════════════════════════════ */
+
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  cursor: zoom-out;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+#lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #FFFFFF;
+  transition: background 0.15s;
+  z-index: 1001;
+}
+
+#lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+#lightbox-close i {
+  font-size: 1.25rem;
+}
+
+img.lightbox-trigger {
+  cursor: zoom-in;
+}
 </style>
 </head>
 <body>
@@ -1267,16 +1419,16 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         <!-- Hero images -->
         <div class="cs-hero__images">
           <div class="cs-hero__image-block">
-            <div class="cs-hero__image-placeholder"></div>
-            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+            <img src="images/ero-hero-1.webp" alt="Eroma eCommerce — hero screen 1" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">Whiteboard discovery for product display page (PDP)</p>
           </div>
           <div class="cs-hero__image-block">
-            <div class="cs-hero__image-placeholder"></div>
-            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+            <img src="images/ero-hero-2.webp" alt="Eroma eCommerce — hero screen 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">Mapping complex user flows</p>
           </div>
           <div class="cs-hero__image-block">
-            <div class="cs-hero__image-placeholder"></div>
-            <p class="cs-hero__image-label">Image label, lorem ipsum delor</p>
+            <img src="images/ero-hero-3.webp" alt="Eroma eCommerce — hero screen 3" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">High-fidelity UI design</p>
           </div>
         </div>
 
@@ -1371,8 +1523,8 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
       </div>
 
       <div class="cs-approach__image-block">
-        <div class="cs-approach__image-placeholder"></div>
-        <p class="cs-approach__image-label">Image label, lorem ipsum delor</p>
+        <img src="images/ero-approach-1.webp" alt="Eroma — My approach" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" class="lightbox-trigger">
+        <p class="cs-approach__image-label">Agile: wireframes first, development in parallel</p>
       </div>
 
     </section>
@@ -1391,12 +1543,14 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <img src="images/ero-ux-1.webp" alt="Transparency &amp; Fulfilment — image 1" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Stock transparency</p>
           </div>
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
@@ -1409,12 +1563,16 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
@@ -1427,12 +1585,16 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
@@ -1445,12 +1607,14 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <img src="images/ero-ux-7.webp" alt="Checkout &amp; Account — image 1" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Mapping complex checkout user flows</p>
           </div>
           <div class="cs-ux__image-block">
-            <div class="cs-ux__image-placeholder"></div>
-            <p class="cs-ux__image-label">Image label, lorem ipsum delor</p>
+            <div style="width:100%;aspect-ratio:16/9;background:#F6F6F6;display:flex;align-items:flex-start;padding:1rem;box-sizing:border-box;">
+              <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:#9A9A9A;text-transform:uppercase;">Coming soon</span>
+            </div>
+            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
@@ -1592,6 +1756,102 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
   });
   contactTrigger.addEventListener('click', openContact);
   contactDrawerClose.addEventListener('click', closeContact);
+</script>
+
+<!-- PASSWORD PROTECTION -->
+<div id="pw-overlay">
+  <div class="pw-box">
+    <p class="pw-box__heading">This portfolio is password protected</p>
+    <input class="pw-box__input" type="password" id="pw-input" placeholder="Enter password" autocomplete="current-password">
+    <button class="pw-box__submit" id="pw-submit">Enter</button>
+    <p class="pw-box__error" id="pw-error"></p>
+    <p class="pw-box__contact">To request access, email <a href="mailto:tashrkoch@gmail.com">tashrkoch@gmail.com</a></p>
+  </div>
+</div>
+
+<script>
+  // ── PASSWORD PROTECTION ──
+  // Toggle: set to false to disable password protection
+  const PASSWORD_PROTECTION = true;
+
+  const CORRECT_PASSWORD = 'nkdesign';
+  const SESSION_KEY = 'nk_portfolio_access';
+
+  const overlay = document.getElementById('pw-overlay');
+  const input   = document.getElementById('pw-input');
+  const submit  = document.getElementById('pw-submit');
+  const error   = document.getElementById('pw-error');
+
+  function unlock() {
+    sessionStorage.setItem(SESSION_KEY, 'granted');
+    overlay.classList.add('hidden');
+    input.value = '';
+    error.textContent = '';
+  }
+
+  if (!PASSWORD_PROTECTION || sessionStorage.getItem(SESSION_KEY) === 'granted') {
+    overlay.classList.add('hidden');
+  } else {
+    input.focus();
+  }
+
+  submit.addEventListener('click', function() {
+    if (input.value === CORRECT_PASSWORD) {
+      unlock();
+    } else {
+      error.textContent = 'Incorrect password. Please try again.';
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') submit.click();
+  });
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-label="Image lightbox" aria-modal="true">
+  <button id="lightbox-close" aria-label="Close image">
+    <i class="ph ph-x"></i>
+  </button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  // ── LIGHTBOX ──
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('img.lightbox-trigger');
+    if (img) openLightbox(img.src, img.alt);
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
 </script>
 
 </body>
