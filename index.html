@@ -329,13 +329,12 @@ a { cursor: pointer; }
 
 /* ── Card text ── */
 .cs-card__client {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: var(--space-4);
+  color: var(--secondary);
 }
 
 /* Parent company in brackets — smaller, same colour */
@@ -344,7 +343,7 @@ a { cursor: pointer; }
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 /* ══════════════════════════════════════
@@ -412,8 +411,9 @@ a { cursor: pointer; }
   opacity: 0.8;
 }
 
+.cs-card:not(.cs-card--soon):hover .cs-card__client,
 .cs-card:not(.cs-card--soon):hover .cs-card__title {
-  color: var(--primary);
+  opacity: 0.7;
 }
 
 /* ── Responsive ── */
