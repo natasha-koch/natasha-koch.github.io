@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 200 221' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2'%3E%3Cg transform='matrix(0.606274,0,0,0.606274,-6181.941069,-5117.49235)'%3E%3Cg%3E%3Cg transform='matrix(1.126897,0,0,1.126897,10408.808895,8576.76542)'%3E%3Cpath d='M0,81.307L30.766,42.34L20.054,42.34L-29.396,105.008L-29.396,-48.543C-29.396,-61.759 -30.537,-67.228 -34.866,-72.469C-40.335,-79.078 -47.855,-82.496 -57.653,-82.496C-74.288,-82.496 -88.417,-72.014 -95.708,-54.239L-95.708,-79.164L-121.002,-79.164L-121.002,42.38L-95.937,42.38L-95.937,-32.819C-95.937,-43.301 -90.239,-55.607 -81.353,-64.722C-76.795,-69.507 -71.552,-71.874 -66.54,-72.014C-55.484,-72.322 -54.77,-66.25 -54.235,-57.43L-54.235,42.38L-54.234,42.38L-54.234,163.803L-29.625,163.803L-29.625,118.909L-17.092,102.73L10.71,163.803L37.602,163.803L0,81.307Z' style='fill:rgb(181,51,138);fill-rule:nonzero'/%3E%3C/g%3E%3Cg transform='matrix(0.983989,0,0,54.749227,9927.069025,4685.538378)'%3E%3Cpath d='M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z' style='fill:rgb(34,34,34);fill-rule:nonzero'/%3E%3C/g%3E%3Cg transform='matrix(-0.983989,0,0,54.749227,10796.054845,4685.538378)'%3E%3Cpath d='M336.677,75.229L273.937,75.229L273.937,68.592L336.677,68.592L336.677,68.767L302.574,68.767L300.243,75.048L336.677,75.054L336.677,75.229Z' style='fill:rgb(34,34,34);fill-rule:nonzero'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natasha Koch — Takeflight</title>
+<title>Natasha Koch — Neverfail</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
 <style>
@@ -538,8 +538,8 @@ a { cursor: pointer; }
     margin-bottom: 0;
   }
 
-  /* My Role spans 2 rows, pinned to last column */
-  .cs-sidebar__group:nth-child(3) {
+  /* My Role (nth-child 4 with Scope hidden) spans 2 rows, pinned to last column */
+  .cs-sidebar__group:nth-child(4) {
     grid-column: -2 / -1;
     grid-row: 1 / span 2;
   }
@@ -734,11 +734,7 @@ a { cursor: pointer; }
 }
 
 .cs-outcome__body {
-  grid-column: 1 / 9;
-}
-
-.cs-outcome__body .cs-role-list + .cs-body-paragraph {
-  margin-top: var(--space-16);
+  grid-column: 1 / 7;
 }
 
 .cs-outcome__cta {
@@ -774,7 +770,7 @@ a { cursor: pointer; }
 }
 
 .cs-outcome__stat {
-  grid-column: 9 / 13;
+  grid-column: 10 / 13;
   grid-row: 2 / 4;
   display: flex;
   align-items: flex-start;
@@ -802,13 +798,6 @@ a { cursor: pointer; }
   color: var(--secondary);
 }
 
-.cs-outcome__quote {
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 2.375rem;
-  color: var(--secondary);
-}
-
 .cs-outcome__label {
   font-size: 0.875rem;
   font-weight: 600;
@@ -818,27 +807,37 @@ a { cursor: pointer; }
   color: var(--secondary);
 }
 
+.cs-outcome__image-block {
+  grid-column: 7 / 13;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+
 /* ── Responsive: Outcome ── */
 @media (max-width: 1023px) {
   .cs-outcome__heading {
     grid-column: 1 / -1;
-    grid-row: 1;
   }
 
   .cs-outcome__stat {
     grid-column: 1 / -1;
-    grid-row: 2;
     margin-bottom: var(--space-32);
   }
 
   .cs-outcome__body {
     grid-column: 1 / -1;
-    grid-row: 3;
   }
 
   .cs-outcome__cta {
     grid-column: 1 / -1;
-    grid-row: 4;
+  }
+
+  .cs-outcome__image-block {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: var(--space-32);
   }
 }
 
@@ -1003,7 +1002,8 @@ a { cursor: pointer; }
   }
 
   /* Reset My Role span for single column */
-  .cs-sidebar__group:nth-child(3) {
+  /* Reset My Role span for single column */
+  .cs-sidebar__group:nth-child(4) {
     grid-column: auto;
     grid-row: auto;
   }
@@ -1423,12 +1423,12 @@ img.lightbox-trigger {
       <div class="cs-hero__content">
 
         <!-- Breadcrumb -->
-        <p class="cs-breadcrumb">CASE STUDY ∙ HEADLESS COMMERCE (PWA)</p>
+        <p class="cs-breadcrumb">CASE STUDY ∙ ADOBE COMMERCE ENTERPRISE</p>
 
         <!-- Title -->
-        <h1 class="cs-title">Takeflight / <span class="cs-title__accent">The accelerator</span> <span class="cs-title__line2">behind 25+ storefronts</span></h1>
+        <h1 class="cs-title">Neverfail / <span class="cs-title__accent">UX Research</span> &amp; <span class="cs-title__line2">strategic user journey flows</span></h1>
 
-        <!-- Hero images — placeholders, labels removed pending final assets -->
+        <!-- Hero images — coming soon -->
         <div class="cs-hero__images">
           <div class="cs-hero__image-block">
             <div style="width:100%;aspect-ratio:1/1;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
@@ -1453,34 +1453,38 @@ img.lightbox-trigger {
       <aside class="cs-hero__sidebar">
 
         <div class="cs-sidebar__group">
-          <p class="cs-sidebar__label">Platform</p>
-          <p class="cs-sidebar__text">Aligent's ecommerce accelerator, a headless PWA foundation deployed across 25+ live storefronts</p>
+          <p class="cs-sidebar__label">Client</p>
+          <p class="cs-sidebar__text">Neverfail, spring water and water cooler provider, a Coca-Cola Europacific Partners subsidiary</p>
+        </div>
+
+        <div class="cs-sidebar__group" style="display:none;">
+          <p class="cs-sidebar__label">Scope</p>
+          <p class="cs-sidebar__text">Full site redesign across four customer segments: Residential, Small-Medium Business, Enterprise and Industry</p>
         </div>
 
         <div class="cs-sidebar__group">
           <p class="cs-sidebar__label">Engagement</p>
-          <p class="cs-sidebar__text">4+ years</p>
+          <p class="cs-sidebar__text">2 months</p>
         </div>
 
         <div class="cs-sidebar__group">
           <p class="cs-sidebar__label">My Role</p>
           <ul class="cs-role-list">
-            <li>UX/UI Strategy &amp; Design</li>
-            <li>Configurability &amp; Systems Design</li>
-            <li>Design System &amp; Component Library</li>
-            <li>Accessibility</li>
-            <li>Multi-client Design Governance</li>
+            <li>Led UX Discovery</li>
+            <li>Workshop Facilitation</li>
+            <li>User Types Research</li>
+            <li>User Journey Flow Mapping</li>
           </ul>
         </div>
 
         <div class="cs-sidebar__group">
           <p class="cs-sidebar__label">Aligent Team</p>
-          <p class="cs-sidebar__text">Product Owners ∙ Project Managers ∙ Business Analysts ∙ Principal Engineers ∙ Frontend Engineers ∙ Backend Engineers ∙ QA Engineers ∙ Designers</p>
+          <p class="cs-sidebar__text">Project Manager ∙ Senior Technical Analyst</p>
         </div>
 
         <div class="cs-sidebar__group">
-          <p class="cs-sidebar__label">Deployed for</p>
-          <p class="cs-sidebar__text">Kathmandu ∙ Rockwear ∙ Tarocash ∙ Skechers ∙ HypeDC ∙ Spendless ∙ Neverfail (Coca-Cola Europacific Partners) ∙ Trade Tools ∙ and more</p>
+          <p class="cs-sidebar__label">Client Team</p>
+          <p class="cs-sidebar__text">eCommerce Manager ∙ Marketing Manager ∙ National Business Manager ∙ Senior Accounts Manager ∙ Workshop Stakeholders</p>
         </div>
 
       </aside>
@@ -1496,7 +1500,7 @@ img.lightbox-trigger {
         <h2 class="cs-h2">Context</h2>
       </div>
       <div class="cs-context__body">
-        <p class="cs-body-paragraph">When COVID hit, as the initial shock wore off, a wave of new companies approached Aligent realising with the shift in shopping behaviour that they were unprepared for the moment online. Many needed a more credible eCommerce presence, and fast. Aligent had been offering React headless experiences for clients that required heavy customisation and Adobe Commerce's own headless front end was moving slowly. Aligent made a strategic decision to build a reusable eCommerce foundation, a headless accelerator covering the full end-to-end purchasing journey.</p>
+        <p class="cs-body-paragraph">Neverfail is Australia's leading spring water and water cooler provider, with a customer base spanning individual households through to enterprise and industry accounts. To align with a business systems overhaul of their ERP already underway, Neverfail commissioned a full site redesign on Adobe Commerce. I was brought in to lead the UX discovery phase, producing the strategic outputs that would underpin all subsequent design and development work.</p>
       </div>
     </section>
 
@@ -1506,24 +1510,24 @@ img.lightbox-trigger {
       <div class="cs-challenge__cards">
 
         <div class="cs-challenge__card">
-          <h4 class="cs-h4">Designing for the unknown</h4>
-          <p class="cs-body-paragraph">Every design decision was made without knowing who the next client would be or what they would sell. Behind each client was another unknown: their customers, and what those customers would actually need in their journeys.</p>
+          <h4 class="cs-h4">No single journey</h4>
+          <p class="cs-body-paragraph">From a household managing a fortnightly water delivery to an enterprise client with legal obligations around staff hydration and contracted pricing, Neverfail's platform had to serve a vast range of users. Between them sat small businesses whose loyalty could shift quickly if things went wrong, and industry clients whose accounts were established through dedicated national business managers. No single journey could cover all of them.</p>
         </div>
 
         <div class="cs-challenge__card">
-          <h4 class="cs-h4">Making the complex simple</h4>
-          <p class="cs-body-paragraph">The accelerator had to be considered enough to work as a foundation, yet flexible enough to handle the complexity of different business models, product catalogues, pricing structures, and fulfilment requirements.</p>
+          <h4 class="cs-h4">The date that wouldn't move</h4>
+          <p class="cs-body-paragraph">The ERP implementation set a fixed launch date, and we needed to work in parallel. Traditional discovery methods including user interviews, contextual observation, affinity mapping, and iterative synthesis just weren't viable within that window. The approach had to move fast and produce thorough outputs the whole team could build from. Every decision about how to run the discovery phase was shaped by that constraint.</p>
         </div>
 
         <div class="cs-challenge__card">
-          <h4 class="cs-h4">Designing for inheritance</h4>
-          <p class="cs-body-paragraph">What I designed would be inherited, not once but repeatedly, by developers and designers across dozens of deployments. Every decision had to explain itself, since I wouldn't always be there to interpret it.</p>
+          <h4 class="cs-h4">A jigsaw of knowledge</h4>
+          <p class="cs-body-paragraph">Neverfail's stakeholders held firsthand knowledge of their customers, but that knowledge was distributed. No single person held the full picture, and the existing site reflected what had been built up over time rather than a unified understanding of what each user actually needed. Surfacing and consolidating that knowledge quickly enough to drive informed design and development decisions was critical.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- MY APPROACH -->
+        <!-- MY APPROACH -->
     <section class="cs-approach">
 
       <div class="cs-approach__heading">
@@ -1531,121 +1535,118 @@ img.lightbox-trigger {
       </div>
 
       <div class="cs-approach__body">
-        <p class="cs-body-paragraph">Before committing to what Takeflight's base would include, I looked for patterns across everything I had access to: my own past projects, the wider body of work built across Aligent's client base, research into what competitors were doing, and the broader ecommerce trends and emerging patterns of the time. The question running through all of it was simple: was something used by many, or only by a few?</p>
-        <p class="cs-body-paragraph">We formalised that thinking through an agile, MoSCoW-style process, using those patterns to separate what belonged in the base, what was a nice-to-have, and what fell into chargeable custom work beyond the MVP. That discipline cut both ways: I kept the base lean enough to deploy fast, while still flexible enough to hold up against different clients' customisations, with accessibility considered from the outset rather than addressed after the fact.</p>
+        <p class="cs-body-paragraph">Before committing to an approach, I researched the options and weighed what would actually benefit the project against what was realistically possible given the constraints. Traditional customer journey mapping was one option, but it required a level of time and resource the project didn't have available. User Types and wireflows were the more considered choice, a framework grounded in what users do rather than who they are, producing outputs that could communicate architecture, flow, and page-level detail in the one document.</p>
+        <p class="cs-body-paragraph">Having chosen the methodology, the groundwork began. I mapped the existing site firsthand, working through the current flows to understand where friction lived and how different customers were being routed through it. Alongside that, I researched how to structure the extraction: what dimensions to map, which behaviours to explore, and how to draw out meaningful outputs.</p>
+        <p class="cs-body-paragraph">With Neverfail stakeholders spread across the country, we brought a large group together across multiple remote workshops. The sessions were designed to draw that knowledge out and connect it across the group, building a shared view. Participants specifically praised the methodology for being engaging and interactive.</p>
+
+        <blockquote class="cs-outcome__stat" style="margin-top:var(--space-32);">
+          <div class="cs-outcome__stat-border"></div>
+          <div class="cs-outcome__stat-content">
+            <span class="cs-outcome__quote">"I have to say I very much enjoyed the process. Like you are very thorough, so well done."</span>
+            <span class="cs-outcome__label">Neverfail stakeholder, end of second discovery workshop</span>
+          </div>
+        </blockquote>
       </div>
 
       <div class="cs-approach__image-block">
         <div style="width:100%;aspect-ratio:1232/693;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
           <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
         </div>
-        <p class="cs-approach__image-label"></p>
       </div>
 
     </section>
 
-    <!-- DESIGN WORK -->
+    <!-- UX & PRODUCT DESIGN -->
     <section class="cs-ux">
 
-      <h2 class="cs-h2 cs-ux__heading">Design work</h2>
+      <h2 class="cs-h2 cs-ux__heading">Research &amp; deliverables</h2>
 
-      <!-- A base to build from -->
+      <!-- Understanding the user landscape -->
       <div class="cs-ux__subsection">
-        <h4 class="cs-h4 cs-ux__subheading">A base to build from</h4>
+        <h4 class="cs-h4 cs-ux__subheading">The user landscape</h4>
         <div class="cs-ux__content">
-          <p class="cs-body-paragraph">I designed Takeflight as a componentised base rather than a fixed offering, so Aligent could hand it to clients as something to be customised, not accepted whole. I knew a B2B client with high-volume, repeat purchasing needed a fundamentally different set of components to a B2C retailer, so I designed for that difference from the start.</p>
-          <p class="cs-body-paragraph">Clients took up what made sense to them: a physical store locator for those with retail presence, a category landing page built around hero imagery with the product listing directly underneath, letting a client launch fast without extra build effort, versus a marketing-style page for clients willing to invest the time. I applied the same principle to simpler choices too, mega menu, Buy Now Pay Later providers, gift cards, and promotional codes.</p>
+          <p class="cs-body-paragraph">Before I could map any journey, the user landscape had to be understood. I created a User Types matrix covering four user types across five areas: influences, pain points and challenges, overall goals, current interactions with Neverfail, and the specific tasks they needed to complete on the platform.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
 
-      <!-- Configurability by design -->
+      <!-- Mapping the journeys -->
       <div class="cs-ux__subsection">
-        <h4 class="cs-h4 cs-ux__subheading">Configurability by design</h4>
+        <h4 class="cs-h4 cs-ux__subheading">Mapping the journeys</h4>
         <div class="cs-ux__content">
-          <p class="cs-body-paragraph">I mapped how components could be configured, combining settings in different ways to produce varied states for a single component. Product cards were the clearest example: depending on what a client sold, the same card could click through to the product page, or have an add-to-cart button, or a full quantity selector, letting each merchant's experience match how their customers actually shopped.</p>
-          <p class="cs-body-paragraph">The same adaptability I brought to the rest of the platform. Checkout address fields changed once a client needed to serve international customers, adding a country selector and adjusting which fields appeared for each country. Navigation depth adjusted too, showing two or three levels depending on how a client's own catalogue was structured.</p>
-          <p class="cs-body-paragraph">Some settings I took even further, allowing cascading across multiple components, a setting enabled in one place carrying through to shape how another behaved. A quantity selector setting had downstream effects across the product listing page, product page, cart and mini cart.</p>
+          <p class="cs-body-paragraph">Having established the landscape, my next question was how each segment moved through the platform. I mapped User Journey Flows for Residential, Small-Medium Business, and Enterprise and Industry, covering entry points, decision branches, conditional logic, content requirements, and Neverfail-specific business rules.</p>
+          <p class="cs-body-paragraph">I also built the Residential and SMB flows as interactive documents with clickable states, revealing the typical path for three distinct needs profiles, minimal assistance, some assistance, and researchers, so stakeholders could navigate the range without being overwhelmed.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
 
-      <!-- A frictionless path to checkout -->
+      <!-- A different kind of flow -->
       <div class="cs-ux__subsection">
-        <h4 class="cs-h4 cs-ux__subheading">A frictionless path to checkout</h4>
+        <h4 class="cs-h4 cs-ux__subheading">A different kind of flow</h4>
         <div class="cs-ux__content">
-          <p class="cs-body-paragraph">The path to checkout I designed to remove or defer decisions wherever possible, so a user was never pulled away from what they were doing. Every optional action a user could take whilst browsing: signing in, creating an account, or reviewing the cart could all be handled in a drawer, on whatever page they were already on, opened or closed entirely at their own choosing. Rather than being diverted to another page, I returned the user to their previous flow, maintaining context.</p>
-          <p class="cs-body-paragraph">Checkout couldn't offer the user that same optionality; many decisions and detailed information were needed to complete a purchase. For this, I paced decisions rather than removing them: email, delivery address, shipping options, and payment were revealed progressively, one step at a time, without overwhelming the user. Everything already entered stayed visible across the page rather than disappearing once complete.</p>
-          <p class="cs-body-paragraph">Every one of these decisions, browsing or checkout, was ultimately in service of the same goal: reducing cart abandonment.</p>
+          <p class="cs-body-paragraph">The Enterprise and Industry flow is notably simpler than the others, and deliberately so. I recognised that these users could self-serve, but wanted to guide them toward the flow that gave them multiple routes to human contact, enabled negotiated account setup, and then transitioned them to self-service once that relationship was established.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
 
-      <!-- Research at platform scale -->
+      <!-- The accounts flow -->
       <div class="cs-ux__subsection">
-        <h4 class="cs-h4 cs-ux__subheading">Research at platform scale</h4>
+        <h4 class="cs-h4 cs-ux__subheading">The accounts flow</h4>
         <div class="cs-ux__content">
-          <p class="cs-body-paragraph">Clients often asked for infinite scroll on their product listing page. The footer disappearing, users losing their place, the sense of a list with no end, these were problems I knew about and would steer clients away from. Baymard Institute conducts large-scale eCommerce UX research and is a highly trusted source within the industry. When I found their research comparing infinite scroll against a Load More pattern, it gave me reputable external evidence for a position I was already holding.</p>
-          <p class="cs-body-paragraph">I had applied that thinking across client projects first, validating the approach before bringing it into Takeflight's base, documenting it as a recommendation rather than a mandate, because different clients had different priorities and the right answer wasn't always the same. Load More was only part of the answer though. How users returned to the list mattered just as much: most implementations sent them back to the top rather than where they'd been, undoing exactly what Load More was designed to prevent. I made sure Takeflight restored scroll position on return, and documented both decisions in the wireframe annotations so developers and business analysts working on future deployments had the reasoning behind each, long after the initial base was created.</p>
+          <p class="cs-body-paragraph">Where the journey flows mapped how users arrived and moved through the platform, I mapped what happened once they were inside it. For B2B users especially, this was where the operational complexity of the platform lived.</p>
+          <p class="cs-body-paragraph">The most detailed document in the suite, I covered the entire authenticated account experience across all four user types simultaneously. I colour-coded across three implementation categories: out of the box, some customisation, and fully custom functionality requiring further technical research. I addressed order and subscription management, address and multi-outlet management, invoicing and payment flows, and B2B account hierarchy across two implementation phases.</p>
+          <p class="cs-body-paragraph">I worked closely with the Senior Technical Analyst throughout. Every section was aligned with available Adobe Commerce B2B functionality. Where open questions remained, they were documented explicitly rather than assumed away.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
           <div class="cs-ux__image-block">
             <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
               <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
             </div>
-            <p class="cs-ux__image-label"></p>
           </div>
         </div>
       </div>
 
     </section>
 
-    <!-- OUTCOME -->
+        <!-- OUTCOME -->
     <section class="cs-outcome">
 
       <div class="cs-outcome__heading">
@@ -1653,21 +1654,13 @@ img.lightbox-trigger {
       </div>
 
       <div class="cs-outcome__body">
-        <ul class="cs-role-list">
-          <li><span>Kathmandu grew online sales <strong>46% year-on-year</strong>, achieving a <strong>99/100 PageSpeed</strong> score and <strong>AAA accessibility</strong>.</span></li>
-          <li><span>Trade Tools <strong>switched</strong> to BigCommerce with the <strong>Takeflight based frontend preserved</strong>, delivering 31% year-on-year revenue growth after replatforming.</span></li>
-          <li><span>Fruit Box saw <strong>70%+</strong> of customers <strong>self-managing</strong> orders through the platform.</span></li>
-          <li><span>Joval Winesource <strong>won</strong> the B2B eCommerce Association's global <strong>Mid-Market B2B eCommerce Distributor of the Year</strong> award in 2024.</span></li>
-        </ul>
-        <p class="cs-body-paragraph">Takeflight continued to evolve. I held strategic design ownership throughout, steering decisions and upholding design integrity as the platform scaled to serve clients with increasingly diverse needs. Features and improvements I verified across deployments, accessibility among them, fed back into the base, each one strengthening what came next.</p>
-        <p class="cs-body-paragraph">Across five years and clients nobody could have named at the start, the decisions held.</p>
+        <p class="cs-body-paragraph">The deliverables achieved stakeholder sign-off quickly and moved the project into the next stage. Two designers received the handoff and used the flows as the foundation for all subsequent wireframing and UI design work.</p>
+        <p class="cs-body-paragraph">The site launched successfully and Neverfail was retained as a long-term Aligent client.</p>
       </div>
 
-      <div class="cs-outcome__stat">
-        <div class="cs-outcome__stat-border"></div>
-        <div class="cs-outcome__stat-content">
-          <span class="cs-outcome__quote">46% growth</span>
-          <span class="cs-outcome__label">YEAR-ON-YEAR, KATHMANDU</span>
+      <div class="cs-outcome__image-block">
+        <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
+          <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
         </div>
       </div>
 
@@ -1688,7 +1681,7 @@ img.lightbox-trigger {
   </div>
 </footer>
 
-<script>
+    <script>
   // ── FILENAME VARIABLES — update here on each version bump ──
   const FILES = {
     index:      'index.html',

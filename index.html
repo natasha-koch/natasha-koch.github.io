@@ -420,6 +420,11 @@ a[data-link="takeflight"] .cs-card__image-placeholder {
   background: #fefbfd;
 }
 
+/* Neverfail card — placeholder background override */
+a[data-link="neverfail"] .cs-card__image-placeholder {
+  background: #fefbfd;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1279px) {
   .cs-grid {
@@ -731,7 +736,7 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
       <a href="#" data-link="mitsubishi" class="panel-sub-link">Mitsubishi / Build &amp; Price configuration tool</a>
       <a href="#" data-link="eroma" class="panel-sub-link">Eroma / Unified B2C &amp; B2B eCommerce build</a>
       <a href="#" data-link="takeflight" class="panel-sub-link">Takeflight / The accelerator behind 25+ storefronts</a>
-      <span class="panel-sub-link panel-sub-link--muted">Neverfail (coming soon)</span>
+      <a href="#" data-link="neverfail" class="panel-sub-link">Neverfail / UX Research &amp; strategic user journey flows</a>
       <span class="panel-sub-link panel-sub-link--muted">Haigh's Chocolates (coming soon)</span>
       <span class="panel-sub-link panel-sub-link--muted">Bed Bath N' Table (coming soon)</span>
     </li>
@@ -798,14 +803,16 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
         <p class="cs-card__title">eCommerce accelerator, powering 25+ client sites</p>
       </a>
 
-      <!-- 4. Neverfail — COMING SOON -->
-      <div class="cs-card cs-card--soon">
-        <div class="cs-card__image">
-          <div class="cs-card__image-placeholder"></div>
+      <!-- 4. Neverfail — LIVE -->
+      <a href="#" data-link="neverfail" class="cs-card">
+        <div class="cs-card__image" style="position:relative;">
+          <div class="cs-card__image-placeholder" style="position:relative;">
+            <span style="position:absolute;top:var(--space-12);right:var(--space-12);font-size:12px;font-weight:400;color:#222222;background:#fefbfd;padding:var(--space-4) var(--space-8);">Read case study</span>
+          </div>
         </div>
         <p class="cs-card__client">Neverfail <span class="cs-card__client-sub">(Coca-Cola Europacific Partners)</span></p>
         <p class="cs-card__title">UX research &amp; strategic user flows</p>
-      </div>
+      </a>
 
       <!-- 5. Haigh's Chocolates — COMING SOON -->
       <div class="cs-card cs-card--soon">
@@ -848,7 +855,8 @@ a.panel-section-label:hover { color: var(--primary); background: #fdf5fa; }
     index:      'index.html',
     mitsubishi: 'mitsubishi.html',
     eroma:      'eroma.html',
-    takeflight: 'takeflight.html'
+    takeflight: 'takeflight.html',
+    neverfail:  'neverfail.html'
   };
 
   // Apply links to nav and panel elements
