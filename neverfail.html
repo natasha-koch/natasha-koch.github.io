@@ -680,6 +680,24 @@ a { cursor: pointer; }
   margin-top: var(--space-12);
 }
 
+/* ── Portrait layout variant ── */
+.cs-ux__images--portrait {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gutter);
+  grid-column: 4 / 13;
+  align-items: start;
+}
+
+.cs-ux__image-block--portrait {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-ux__content--portrait {
+  align-self: start;
+}
+
 /* ══════════════════════════════════════
    HOW I WORKED SECTION
    ══════════════════════════════════════ */
@@ -958,6 +976,9 @@ a { cursor: pointer; }
   .cs-ux__images {
     grid-column: 1 / -1;
   }
+  .cs-ux__images--portrait {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 767px) {
@@ -965,6 +986,14 @@ a { cursor: pointer; }
     grid-template-columns: 1fr;
     row-gap: var(--space-32);
   }
+  .cs-ux__images--portrait {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-32);
+  }
+
+  .cs-ux__content--portrait { order: -1; }
+  .cs-ux__image-block--portrait { order: 1; }
+}
 }
 
 /* ── Responsive: How I Worked ── */
@@ -1428,22 +1457,19 @@ img.lightbox-trigger {
         <!-- Title -->
         <h1 class="cs-title">Neverfail / <span class="cs-title__accent">UX Research</span> &amp; <span class="cs-title__line2">strategic user journey flows</span></h1>
 
-        <!-- Hero images — coming soon -->
+        <!-- Hero images -->
         <div class="cs-hero__images">
           <div class="cs-hero__image-block">
-            <div style="width:100%;aspect-ratio:1/1;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-hero-1.webp" alt="Neverfail — hero screen 1" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">Current state audit</p>
           </div>
           <div class="cs-hero__image-block">
-            <div style="width:100%;aspect-ratio:1/1;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-hero-2.webp" alt="Neverfail — hero screen 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">Research synthesis</p>
           </div>
           <div class="cs-hero__image-block">
-            <div style="width:100%;aspect-ratio:1/1;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-hero-3.webp" alt="Neverfail — hero screen 3" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-hero__image-label">Residential journey flow</p>
           </div>
         </div>
 
@@ -1548,9 +1574,8 @@ img.lightbox-trigger {
       </div>
 
       <div class="cs-approach__image-block">
-        <div style="width:100%;aspect-ratio:1232/693;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-          <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-        </div>
+        <img src="images/nf-approach-1.webp" alt="Neverfail — My approach" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" class="lightbox-trigger">
+        <p class="cs-approach__image-label">Workshop 1 - Challenges exercise</p>
       </div>
 
     </section>
@@ -1563,19 +1588,13 @@ img.lightbox-trigger {
       <!-- Understanding the user landscape -->
       <div class="cs-ux__subsection">
         <h4 class="cs-h4 cs-ux__subheading">The user landscape</h4>
-        <div class="cs-ux__content">
-          <p class="cs-body-paragraph">Before I could map any journey, the user landscape had to be understood. I created a User Types matrix covering four user types across five areas: influences, pain points and challenges, overall goals, current interactions with Neverfail, and the specific tasks they needed to complete on the platform.</p>
-        </div>
-        <div class="cs-ux__images">
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+        <div class="cs-ux__images--portrait">
+          <div class="cs-ux__image-block--portrait">
+            <img src="images/nf-ux-1.webp" alt="Neverfail — User Types matrix" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">User Types matrix - mapping converging and diverging needs</p>
           </div>
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+          <div class="cs-ux__content--portrait">
+            <p class="cs-body-paragraph">Before I could map any journey, the user landscape had to be understood. I created a User Types matrix covering four user types across five areas: influences, pain points and challenges, overall goals, current interactions with Neverfail, and the specific tasks they needed to complete on the platform.</p>
           </div>
         </div>
       </div>
@@ -1585,18 +1604,28 @@ img.lightbox-trigger {
         <h4 class="cs-h4 cs-ux__subheading">Mapping the journeys</h4>
         <div class="cs-ux__content">
           <p class="cs-body-paragraph">Having established the landscape, my next question was how each segment moved through the platform. I mapped User Journey Flows for Residential, Small-Medium Business, and Enterprise and Industry, covering entry points, decision branches, conditional logic, content requirements, and Neverfail-specific business rules.</p>
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <img src="images/nf-ux-2.webp" alt="Neverfail — Residential journey flow" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Residential journey flow</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <img src="images/nf-ux-3.webp" alt="Neverfail — SMB journey flow" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">SMB journey flow</p>
+          </div>
+        </div>
+        <div class="cs-ux__content" style="margin-top:var(--space-32);">
           <p class="cs-body-paragraph">I also built the Residential and SMB flows as interactive documents with clickable states, revealing the typical path for three distinct needs profiles, minimal assistance, some assistance, and researchers, so stakeholders could navigate the range without being overwhelmed.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-ux-4.webp" alt="Neverfail — Residential minimal assistance" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Residential - minimal assistance</p>
           </div>
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-ux-5.webp" alt="Neverfail — Residential researchers" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Residential - researchers</p>
           </div>
         </div>
       </div>
@@ -1604,19 +1633,13 @@ img.lightbox-trigger {
       <!-- A different kind of flow -->
       <div class="cs-ux__subsection">
         <h4 class="cs-h4 cs-ux__subheading">A different kind of flow</h4>
-        <div class="cs-ux__content">
-          <p class="cs-body-paragraph">The Enterprise and Industry flow is notably simpler than the others, and deliberately so. I recognised that these users could self-serve, but wanted to guide them toward the flow that gave them multiple routes to human contact, enabled negotiated account setup, and then transitioned them to self-service once that relationship was established.</p>
-        </div>
-        <div class="cs-ux__images">
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+        <div class="cs-ux__images--portrait">
+          <div class="cs-ux__image-block--portrait">
+            <img src="images/nf-ux-6.webp" alt="Neverfail — Enterprise and Industry journey flow" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Enterprise & Industry - high touch before self-serve</p>
           </div>
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+          <div class="cs-ux__content--portrait">
+            <p class="cs-body-paragraph">The Enterprise and Industry flow is notably simpler than the others, and deliberately so. I recognised that these users could self-serve, but wanted to guide them toward the flow that gave them multiple routes to human contact, enabled negotiated account setup, and then transitioned them to self-service once that relationship was established.</p>
           </div>
         </div>
       </div>
@@ -1631,14 +1654,12 @@ img.lightbox-trigger {
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-ux-7.webp" alt="Neverfail — Accounts flow account management" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Accounts flow - account management</p>
           </div>
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
+            <img src="images/nf-ux-8.webp" alt="Neverfail — Accounts flow B2B hierarchy" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Accounts flow - orders and subscription management</p>
           </div>
         </div>
       </div>
@@ -1658,9 +1679,8 @@ img.lightbox-trigger {
       </div>
 
       <div class="cs-outcome__image-block">
-        <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-          <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-        </div>
+        <img src="images/nf-ui.webp" alt="Neverfail — Accounts dashboard final UI" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+        <p class="cs-outcome__image-label">Accounts dashboard - final UI</p>
       </div>
 
     </section>
