@@ -589,37 +589,17 @@ a { cursor: pointer; }
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: var(--grid-gutter);
+  row-gap: var(--space-16);
   margin-top: var(--space-80);
   margin-bottom: var(--space-80);
 }
 
 .cs-approach__heading {
   grid-column: 1 / -1;
-  margin-bottom: var(--space-32);
 }
 
 .cs-approach__body {
-  grid-column: 1 / 7;
-}
-
-.cs-approach__image-block {
-  grid-column: 7 / 13;
-  display: flex;
-  flex-direction: column;
-}
-
-.cs-approach__image-placeholder {
-  width: 100%;
-  aspect-ratio: 704 / 363;
-  background: var(--light-silver);
-}
-
-.cs-approach__image-label {
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.0625rem;
-  color: var(--secondary);
-  margin-top: var(--space-12);
+  grid-column: 3 / 11;
 }
 
 /* ══════════════════════════════════════
@@ -940,10 +920,6 @@ a { cursor: pointer; }
 @media (max-width: 1023px) {
   .cs-approach__body {
     grid-column: 1 / -1;
-  }
-  .cs-approach__image-block {
-    grid-column: 1 / -1;
-    margin-top: var(--space-32);
   }
 }
 
@@ -1532,13 +1508,6 @@ img.lightbox-trigger {
         <p class="cs-body-paragraph">We formalised that thinking through an agile, MoSCoW-style process, using those patterns to separate what belonged in the base, what was a nice-to-have, and what fell into chargeable custom work beyond the MVP. That discipline cut both ways: I kept the base lean enough to deploy fast, while still flexible enough to hold up against different clients' customisations, with accessibility considered from the outset rather than addressed after the fact.</p>
       </div>
 
-      <div class="cs-approach__image-block">
-        <div style="width:100%;aspect-ratio:1232/693;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-          <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-        </div>
-        <p class="cs-approach__image-label"></p>
-      </div>
-
     </section>
 
     <!-- DESIGN WORK -->
@@ -1555,16 +1524,12 @@ img.lightbox-trigger {
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-1.webp" alt="Store locator" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Store locator</p>
           </div>
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-2.webp" alt="Category landing page" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Category landing page</p>
           </div>
         </div>
       </div>
@@ -1579,16 +1544,12 @@ img.lightbox-trigger {
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-3.webp" alt="Simple product card states" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Simple product card states</p>
           </div>
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-4.webp" alt="Mixed cards: simple & configurable states" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Mixed cards: simple & configurable states</p>
           </div>
         </div>
       </div>
