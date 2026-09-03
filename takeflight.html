@@ -923,6 +923,29 @@ a { cursor: pointer; }
   }
 }
 
+/* ── Frictionless path: second content block spacing ── */
+.cs-ux__subsection--frictionless .cs-ux__images + .cs-ux__content {
+  margin-top: var(--space-20);
+}
+
+/* ── Portrait layout (single image + text side by side) ── */
+.cs-ux__images--portrait {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gutter);
+  grid-column: 4 / 13;
+  align-items: start;
+}
+
+.cs-ux__image-block--portrait {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-ux__content--portrait {
+  align-self: start;
+}
+
 /* ── Responsive: UX & Product Design ── */
 @media (max-width: 1023px) {
   .cs-ux__subheading {
@@ -935,6 +958,9 @@ a { cursor: pointer; }
   .cs-ux__images {
     grid-column: 1 / -1;
   }
+  .cs-ux__images--portrait {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 767px) {
@@ -942,6 +968,12 @@ a { cursor: pointer; }
     grid-template-columns: 1fr;
     row-gap: var(--space-32);
   }
+  .cs-ux__images--portrait {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-32);
+  }
+  .cs-ux__content--portrait { order: -1; }
+  .cs-ux__image-block--portrait { order: 1; }
 }
 
 /* ── Responsive: How I Worked ── */
@@ -1553,25 +1585,33 @@ img.lightbox-trigger {
       </div>
 
       <!-- A frictionless path to checkout -->
-      <div class="cs-ux__subsection">
+      <div class="cs-ux__subsection cs-ux__subsection--frictionless">
         <h4 class="cs-h4 cs-ux__subheading">A frictionless path to checkout</h4>
         <div class="cs-ux__content">
           <p class="cs-body-paragraph">The path to checkout I designed to remove or defer decisions wherever possible, so a user was never pulled away from what they were doing. Every optional action a user could take whilst browsing: signing in, creating an account, or reviewing the cart could all be handled in a drawer, on whatever page they were already on, opened or closed entirely at their own choosing. Rather than being diverted to another page, I returned the user to their previous flow, maintaining context.</p>
-          <p class="cs-body-paragraph">Checkout couldn't offer the user that same optionality; many decisions and detailed information were needed to complete a purchase. For this, I paced decisions rather than removing them: email, delivery address, shipping options, and payment were revealed progressively, one step at a time, without overwhelming the user. Everything already entered stayed visible across the page rather than disappearing once complete.</p>
+        </div>
+        <div class="cs-ux__images">
+          <div class="cs-ux__image-block">
+            <img src="images/tf-ux-5.webp" alt="Maintaining context - sign in drawer" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Maintaining context - sign in drawer</p>
+          </div>
+          <div class="cs-ux__image-block">
+            <img src="images/tf-ux-6.webp" alt="Maintaining context - mini cart" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Maintaining context - mini cart</p>
+          </div>
+        </div>
+        <div class="cs-ux__content">
+          <p class="cs-body-paragraph">Checkout couldn't offer the user that same optionality; many decisions and detailed information were needed to complete a purchase. For this, I paced decisions rather than removing them: email, delivery address, shipping options, and payment were revealed progressively, one step at a time, without overwhelming the user. Where possible, on larger devices I kept everything entered visible rather than disappearing once complete, whilst on smaller devices I ensured sections could be easily toggled between via multiple paths.</p>
           <p class="cs-body-paragraph">Every one of these decisions, browsing or checkout, was ultimately in service of the same goal: reducing cart abandonment.</p>
         </div>
         <div class="cs-ux__images">
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-7.webp" alt="Checkout - bag to delivery" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Checkout - bag to delivery</p>
           </div>
           <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+            <img src="images/tf-ux-8.webp" alt="Checkout - shipping to payment" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Checkout - shipping to payment</p>
           </div>
         </div>
       </div>
@@ -1579,22 +1619,14 @@ img.lightbox-trigger {
       <!-- Research at platform scale -->
       <div class="cs-ux__subsection">
         <h4 class="cs-h4 cs-ux__subheading">Research at platform scale</h4>
-        <div class="cs-ux__content">
-          <p class="cs-body-paragraph">Clients often asked for infinite scroll on their product listing page. The footer disappearing, users losing their place, the sense of a list with no end, these were problems I knew about and would steer clients away from. Baymard Institute conducts large-scale eCommerce UX research and is a highly trusted source within the industry. When I found their research comparing infinite scroll against a Load More pattern, it gave me reputable external evidence for a position I was already holding.</p>
-          <p class="cs-body-paragraph">I had applied that thinking across client projects first, validating the approach before bringing it into Take Flight's base, documenting it as a recommendation rather than a mandate, because different clients had different priorities and the right answer wasn't always the same. Load More was only part of the answer though. How users returned to the list mattered just as much: most implementations sent them back to the top rather than where they'd been, undoing exactly what Load More was designed to prevent. I made sure Take Flight restored scroll position on return, and documented both decisions in the wireframe annotations so developers and business analysts working on future deployments had the reasoning behind each, long after the initial base was created.</p>
-        </div>
-        <div class="cs-ux__images">
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+        <div class="cs-ux__images--portrait">
+          <div class="cs-ux__image-block--portrait">
+            <img src="images/tf-ux-9.webp" alt="Load More - behaviour annotations" style="width:100%;object-fit:cover;display:block;" class="lightbox-trigger">
+            <p class="cs-ux__image-label">Load More - behaviour annotations</p>
           </div>
-          <div class="cs-ux__image-block">
-            <div style="width:100%;aspect-ratio:16/9;background:var(--white);display:flex;align-items:flex-start;justify-content:flex-end;padding:0.75rem;box-sizing:border-box;">
-              <span style="font-size:12px;font-weight:600;color:#d2d2d2;background:#fdfdfd;padding:0.25rem 0.5rem;">Coming soon</span>
-            </div>
-            <p class="cs-ux__image-label"></p>
+          <div class="cs-ux__content--portrait">
+            <p class="cs-body-paragraph">Clients often asked for infinite scroll on their product listing page. The footer disappearing, users losing their place, the sense of a list with no end, these were problems I knew about and would steer clients away from. Baymard Institute conducts large-scale eCommerce UX research and is a highly trusted source within the industry. When I found their research comparing infinite scroll against a Load More pattern, it gave me reputable external evidence for a position I was already holding.</p>
+            <p class="cs-body-paragraph">I had applied that thinking across client projects first, validating the approach before bringing it into Take Flight's base, documenting it as a recommendation rather than a mandate, because different clients had different priorities and the right answer wasn't always the same. Load More was only part of the answer though. How users returned to the list mattered just as much: most implementations sent them back to the top rather than where they'd been, undoing exactly what Load More was designed to prevent. I made sure Take Flight restored scroll position on return, and documented both decisions in the wireframe annotations so developers and business analysts working on future deployments had the reasoning behind each, long after the initial base was created.</p>
           </div>
         </div>
       </div>
