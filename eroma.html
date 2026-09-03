@@ -1760,16 +1760,20 @@ img.lightbox-trigger {
 
 <script>
   // ── PASSWORD PROTECTION ──
-  // Toggle: set to false to disable password protection
-  const PASSWORD_PROTECTION = true;
 
-  const CORRECT_PASSWORD = 'nkdesign';
+  const _h = '9eaabd423810ec0f134027716dd7c1724dbbf8cb36fb963aec50287cfd82c521';
   const SESSION_KEY = 'nk_portfolio_access';
 
   const overlay = document.getElementById('pw-overlay');
   const input   = document.getElementById('pw-input');
   const submit  = document.getElementById('pw-submit');
   const error   = document.getElementById('pw-error');
+
+  async function _c(v) {
+    const d = new TextEncoder().encode(v);
+    const b = await crypto.subtle.digest('SHA-256', d);
+    return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2, '0')).join('');
+  }
 
   function unlock() {
     sessionStorage.setItem(SESSION_KEY, 'granted');
@@ -1778,14 +1782,14 @@ img.lightbox-trigger {
     error.textContent = '';
   }
 
-  if (!PASSWORD_PROTECTION || sessionStorage.getItem(SESSION_KEY) === 'granted') {
+  if (sessionStorage.getItem(SESSION_KEY) === 'granted') {
     overlay.classList.add('hidden');
   } else {
     input.focus();
   }
 
-  submit.addEventListener('click', function() {
-    if (input.value === CORRECT_PASSWORD) {
+  submit.addEventListener('click', async function() {
+    if (await _c(input.value) === _h) {
       unlock();
     } else {
       error.textContent = 'Incorrect password. Please try again.';
